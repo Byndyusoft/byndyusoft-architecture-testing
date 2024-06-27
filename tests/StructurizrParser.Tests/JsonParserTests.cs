@@ -9,11 +9,15 @@
 
     public class StructurizrJsonParsingTestCase
     {
+        public string Description { get; set; }
+
         public string JsonFileName { get; set; }
 
         public Func<string, bool> ServiceNameMatcher { get; set; }
 
         public ServiceContract[] ExpectedServiceContracts { get; set; }
+
+        public override string ToString() => Description;
     }
 
     public class JsonParserTests
@@ -27,7 +31,8 @@
                   {
                       new StructurizrJsonParsingTestCase
                       {
-                          JsonFileName = @".\ArchitectureFiles\musicality-labs.json",
+                          Description = "Should parse Musicality Labs architecture",
+                          JsonFileName = "ArchitectureFiles/musicality-labs.json",
                           ServiceNameMatcher = x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase),
                           ExpectedServiceContracts
                               = new[]
