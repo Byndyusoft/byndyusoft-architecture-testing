@@ -1,0 +1,33 @@
+﻿namespace MusicalityLabs.Storage.Api.Tests
+{
+    using System;
+    using System.IO;
+    using Byndyusoft.ArchitectureTesting.Abstractions.Validation;
+    using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
+    using Byndyusoft.ArchitectureTesting.StructurizrParser;
+    using FluentAssertions;
+    using Validation.DependencyValidators;
+    using Validation.Extensions;
+    using Xunit;
+
+    public class ArchitectureImplementationTest
+    {
+        [Fact]
+        public void ServiceShouldImplementArchitecture()
+        {
+            // Given
+            var startupType = typeof(Startup);
+            var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
+            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(startupType.Assembly);
+            using var serviceImplementation = ServiceImplementationExtensions.Create(startupType);
+
+            // When
+            var serviceValidationErrors = ServiceValidatorExtensions.Create(
+                x => x.AddDependencyValidatorsFromAssembly(typeof(DbDependencyValidator).Assembly)
+            ).Validate(serviceContract, serviceImplementation);
+
+            // Then
+            serviceValidationErrors.Should().BeEmpty();
+        }
+    }
+}
