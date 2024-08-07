@@ -1,4 +1,4 @@
-﻿namespace MusicalityLabs.Storage.Api.Tests.Validation.Extensions
+﻿namespace MusicalityLabs.Storage.Api.Tests.Validation.ServiceImplementations
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    public static class ServiceImplementationExtensions
+    public static class ServiceImplementationsFactory
     {
         private static IServiceProvider BuildServiceProvider(Type startupType)
         {

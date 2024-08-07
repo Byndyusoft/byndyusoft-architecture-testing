@@ -7,7 +7,7 @@
     using Byndyusoft.ArchitectureTesting.StructurizrParser;
     using FluentAssertions;
     using Validation.DependencyValidators;
-    using Validation.Extensions;
+    using Validation.ServiceImplementations;
     using Xunit;
 
     public class ArchitectureImplementationTest
@@ -19,7 +19,7 @@
             var startupType = typeof(Startup);
             var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
             var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(startupType.Assembly);
-            using var serviceImplementation = ServiceImplementationExtensions.Create(startupType);
+            using var serviceImplementation = ServiceImplementationsFactory.Create(startupType);
 
             // When
             var serviceValidationErrors = ServiceValidatorsFactory.Create(
