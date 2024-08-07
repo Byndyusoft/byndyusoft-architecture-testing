@@ -18,19 +18,10 @@
         /// </summary>
         public IServiceProvider ServiceProvider { get; set; }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if(ServiceProvider is IDisposable disposable)
-                    disposable.Dispose();
-            }
-        }
-
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            if (ServiceProvider is IDisposable disposable)
+                disposable.Dispose();
         }
     }
 }
