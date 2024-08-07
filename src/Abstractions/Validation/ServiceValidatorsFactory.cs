@@ -2,7 +2,10 @@
 {
     using System;
 
-    public static class ServiceValidatorExtensions
+    /// <summary>
+    /// Фабрика для создания валидаторов
+    /// </summary>
+    public static class ServiceValidatorsFactory
     {
         /// <summary>
         /// Создает валидатор реализации сервиса для переданной конфигурации <paramref name="config"/>

@@ -22,7 +22,7 @@
             using var serviceImplementation = ServiceImplementationExtensions.Create(startupType);
 
             // When
-            var serviceValidationErrors = ServiceValidatorExtensions.Create(
+            var serviceValidationErrors = ServiceValidatorsFactory.Create(
                 x => x.AddDependencyValidatorsFromAssembly(typeof(DbDependencyValidator).Assembly)
             ).Validate(serviceContract, serviceImplementation);
 
