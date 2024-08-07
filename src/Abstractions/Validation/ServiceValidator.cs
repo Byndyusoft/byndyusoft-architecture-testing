@@ -5,7 +5,6 @@
     using System.Linq;
     using DependencyValidators;
     using ServiceContracts;
-    using ServiceContracts.Dependencies;
     using ServiceImplementations;
 
     /// <summary>
@@ -23,21 +22,29 @@
         /// <summary>
         /// Валидирует реализацию сервиса <paramref name="implementation"/> на соответствие описанию <paramref name="contract"/>
         /// </summary>
-        /// <param name="contract">Описание сериса</param>
+        /// <param name="contract">Описание сервиса</param>
         /// <param name="implementation">Реализация сервиса</param>
+        /// <param name="validationConfiguration">Настройки валидации реализации сервиса</param>
         /// <returns>Список выявленных проблем</returns>
-        public IEnumerable<string> Validate(ServiceContract contract, ServiceImplementation implementation)
+        public IEnumerable<string> Validate(
+            ServiceContract contract,
+            ServiceImplementation implementation,
+            ServiceValidationConfiguration? validationConfiguration = null
+        )
         {
-            var dependenciesByValidators = _dependencyValidators.Values.ToDictionary(x => x, _ => new List<DependencyBase>());
-            foreach (var dependency in contract.Dependencies)
-            {
-                if(_dependencyValidators.TryGetValue(dependency.GetType(), out var validator) == false)
-                    continue;
+            var configuration = validationConfiguration ?? new ServiceValidationConfiguration();
+            return contract.Dependencies
+                .GroupBy(dependency => dependency.GetType())
+                .Where(dependenciesGroup => configuration.IgnoredDependencyTypes.Contains(dependenciesGroup.Key) == false)
+                .SelectMany(
+                    dependenciesGroup =>
+                        {
+                            if (_dependencyValidators.TryGetValue(dependenciesGroup.Key, out var validator) == false)
+                                throw new InvalidOperationException($"Validator for dependency {dependenciesGroup.Key.Name} must be provided");
 
-                dependenciesByValidators[validator].Add(dependency);
-            }
-
-            return dependenciesByValidators.SelectMany(pair => pair.Key.Validate(pair.Value.ToArray(), implementation));
+                            return validator.Validate(dependenciesGroup.ToArray(), implementation);
+                        }
+                );
         }
     }
 }
