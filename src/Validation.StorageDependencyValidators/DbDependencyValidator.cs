@@ -1,6 +1,6 @@
-﻿namespace MusicalityLabs.Storage.Api.Tests.Validation.DependencyValidators
+﻿namespace Byndyusoft.ArchitectureTesting.Validation.DependencyValidators
 {
-    using Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts.Dependencies;
+    using Abstractions.ServiceContracts.Dependencies;
 
     public class DbDependencyValidator : StorageDependencyValidatorBase<DbDependency>
     {

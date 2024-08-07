@@ -5,8 +5,8 @@
     using Byndyusoft.ArchitectureTesting.Abstractions.Validation;
     using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
     using Byndyusoft.ArchitectureTesting.StructurizrParser;
+    using Byndyusoft.ArchitectureTesting.Validation.DependencyValidators;
     using FluentAssertions;
-    using Validation.DependencyValidators;
     using Validation.ServiceImplementations;
     using Xunit;
 

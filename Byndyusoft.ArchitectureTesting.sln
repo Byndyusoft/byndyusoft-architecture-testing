@@ -27,15 +27,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{3E
 		examples\Directory.Build.props = examples\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Contracts", "examples\Api.Contracts\Api.Contracts.csproj", "{BE19D907-9BE0-4CED-8460-820774DB30B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Contracts", "examples\Api.Contracts\Api.Contracts.csproj", "{BE19D907-9BE0-4CED-8460-820774DB30B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Clients", "examples\Api.Clients\Api.Clients.csproj", "{3DC29ABF-B2A5-404C-BA7C-BCEDA02EC357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Clients", "examples\Api.Clients\Api.Clients.csproj", "{3DC29ABF-B2A5-404C-BA7C-BCEDA02EC357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "examples\DataAccess\DataAccess.csproj", "{E3AFF259-C472-4841-BCE8-2C95042083E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "examples\DataAccess\DataAccess.csproj", "{E3AFF259-C472-4841-BCE8-2C95042083E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "examples\Api\Api.csproj", "{2C85FA76-AF62-4D6D-89BF-EE9B52AFDC72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "examples\Api\Api.csproj", "{2C85FA76-AF62-4D6D-89BF-EE9B52AFDC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "examples\Api.Tests\Api.Tests.csproj", "{DB9964A3-5C44-453D-8066-BEA6A9920209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Tests", "examples\Api.Tests\Api.Tests.csproj", "{DB9964A3-5C44-453D-8066-BEA6A9920209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.StorageDependencyValidators", "src\Validation.StorageDependencyValidators\Validation.StorageDependencyValidators.csproj", "{368D567C-90A9-40A8-B5A1-4F624754A062}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{DB9964A3-5C44-453D-8066-BEA6A9920209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB9964A3-5C44-453D-8066-BEA6A9920209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB9964A3-5C44-453D-8066-BEA6A9920209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368D567C-90A9-40A8-B5A1-4F624754A062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368D567C-90A9-40A8-B5A1-4F624754A062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368D567C-90A9-40A8-B5A1-4F624754A062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368D567C-90A9-40A8-B5A1-4F624754A062}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{E3AFF259-C472-4841-BCE8-2C95042083E3} = {3E802220-D845-4B0F-9F98-ACCE8861F90D}
 		{2C85FA76-AF62-4D6D-89BF-EE9B52AFDC72} = {3E802220-D845-4B0F-9F98-ACCE8861F90D}
 		{DB9964A3-5C44-453D-8066-BEA6A9920209} = {3E802220-D845-4B0F-9F98-ACCE8861F90D}
+		{368D567C-90A9-40A8-B5A1-4F624754A062} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A79E4AD9-244B-42E6-BD30-255B9C3DEC46}

@@ -1,12 +1,12 @@
-﻿namespace MusicalityLabs.Storage.Api.Tests.Validation.DependencyValidators
+﻿namespace Byndyusoft.ArchitectureTesting.Validation.DependencyValidators
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts.Dependencies;
-    using Byndyusoft.ArchitectureTesting.Abstractions.ServiceImplementations;
-    using Byndyusoft.ArchitectureTesting.Abstractions.Validation.DependencyValidators;
-    using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
+    using Abstractions.ServiceContracts.Dependencies;
+    using Abstractions.ServiceImplementations;
+    using Abstractions.Validation.DependencyValidators;
+    using Abstractions.Validation.Extensions;
 
     public class StorageDependencyValidatorBase<TDependency> : DependencyValidatorBase<TDependency>
         where TDependency : StorageDependencyBase
