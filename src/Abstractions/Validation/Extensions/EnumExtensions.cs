@@ -14,19 +14,16 @@
         public static string GetDescription(this Enum member)
         {
             var memberTypeInfo = member.GetType().GetTypeInfo();
-
             if (memberTypeInfo.IsEnum == false)
                 throw new ArgumentOutOfRangeException(nameof(member), "member is not enum");
 
-            var fieldInfo = memberTypeInfo.GetField(member.ToString());
+            var memberString = member.ToString();
+            var fieldInfo = memberTypeInfo.GetField(memberString);
             if (fieldInfo == null)
-                throw new InvalidOperationException($"{nameof(member)} is not a part of the enum declaration");
+                throw new InvalidOperationException($"{memberString} is not a part of the enum declaration");
 
             var attributes = fieldInfo.GetCustomAttributes<DescriptionAttribute>(false).ToArray();
-            if (attributes.Length == 0)
-                throw new InvalidOperationException($"{nameof(DescriptionAttribute)} was not declared for {nameof(member)}");
-
-            return attributes[0].Description;
+            return attributes.Length == 0 ? memberString : attributes[0].Description;
         }
     }
 }
