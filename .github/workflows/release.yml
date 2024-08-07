@@ -1,0 +1,37 @@
+name: Publish
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: install dotnet 6.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install packages
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build
+        
+      - name: Create package(s)
+        run: dotnet pack --configuration Release --no-build
+        
+      - name: Publish packages
+        run: dotnet nuget push **/*.nupkg -k ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
