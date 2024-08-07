@@ -11,7 +11,7 @@ How to implement:
 - set up versioning and sharing of the architecture, for example, using NuGet packages;
 - create a project in the service to test its architecture;
 - add package with architecture to the project; 
-- add package `Byndyusoft.ArchitectureTesting.StructurizrParser` to the project in order to parse architecture into an object model, currently only the architecture described in the Structurizr is supported;
+- add package [<code>Byndyusoft.ArchitectureTesting.StructurizrParser</code>](#byndyusoftarchitecturetestingstructurizrparser) to the project in order to parse architecture into an object model, currently only the architecture described in the Structurizr is supported;
 - implement dependency validators and [<code>ServiceImplementation</code>](src/Abstractions/ServiceImplementations/ServiceImplementation.cs) ititializer;
 - add a test to check the compliance of the service implementation with its description on the architecture, example can be found [here](examples/Api.Tests/ArchitectureImplementationTest.cs).
 
