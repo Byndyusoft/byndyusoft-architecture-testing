@@ -6,6 +6,12 @@ Provides the necessary tooling for testing the architecture.
 
 ## Validation of architecture implementation in services
 
+Main concept:
+- the architect describes the architecture in code as a contract that the services must satisfy and shares it;
+- developers write validators for architecture dependencies and shares them as NuGet package;
+- in each service, developers add a test, that receives as input an architecture, a description of how the service was implemented, a set of validators for architectural dependencies;
+- primitives from this repository inside the test compare the description of the service on the architecture with its implementation and produce a list of inconsistencies.
+
 How to implement:
 - describe the architecture as code and store it in a Git repository;
 - set up versioning and sharing of the architecture, for example, using NuGet packages;
