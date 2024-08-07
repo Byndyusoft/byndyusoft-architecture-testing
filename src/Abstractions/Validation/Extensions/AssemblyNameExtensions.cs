@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="assemblyName">Проверяемое имя сборки</param>
         /// <param name="patterns">Возможные префиксы</param>
-        public static bool IsFullNameStartWith(this AssemblyName assemblyName, params string[] patterns)
+        public static bool FullNameStartsWith(this AssemblyName assemblyName, params string[] patterns)
             => patterns.Any(x => assemblyName.FullName.StartsWith(x, StringComparison.InvariantCultureIgnoreCase));
     }
 }

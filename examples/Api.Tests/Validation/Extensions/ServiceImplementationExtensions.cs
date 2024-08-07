@@ -33,7 +33,7 @@
                 = new ServiceImplementation
                   {
                       ServiceAssemblies = rootAssembly.GetServiceAssemblies(
-                          x => x.IsFullNameStartWith("Byndyusoft.", "MusicalityLabs.")
+                          x => x.FullNameStartsWith("Byndyusoft.", "MusicalityLabs.")
                       ),
                       ServiceProvider = BuildServiceProvider(startupType)
                   };

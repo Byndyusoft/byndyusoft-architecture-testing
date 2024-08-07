@@ -22,7 +22,7 @@
         {
             var dependency = dependencies.SingleOrDefault();
             var compatibleAssemblies = serviceImplementation
-                .ServiceAssemblies.Where(assembly => assembly.IsAssemblyNameEquals(_storageClientAssemblyName)).ToArray();
+                .ServiceAssemblies.Where(assembly => assembly.AssemblyNameEquals(_storageClientAssemblyName)).ToArray();
 
             var errors = Enumerable.Empty<string>();
             if (dependency == null && compatibleAssemblies.Length > 0)

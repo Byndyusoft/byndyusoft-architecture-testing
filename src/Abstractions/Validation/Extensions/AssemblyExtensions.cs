@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="assembly">Проверяемая сборка</param>
         /// <param name="assemblyName">Предполагаемое имя сборки</param>
-        public static bool IsAssemblyNameEquals(this Assembly assembly, string assemblyName)
+        public static bool AssemblyNameEquals(this Assembly assembly, string assemblyName)
             => assembly.GetName().Name!.Equals(assemblyName);
 
         private static IEnumerable<Assembly> GetServiceAssemblies(
@@ -34,7 +34,7 @@
                 assembly.GetReferencedAssemblies()
                     .Where(x => assembliesFilter?.Invoke(x) ?? true)
                     .Where(x => processedAssemblyNames.Contains(x.FullName) == false)
-                    .Where(x => x.IsFullNameStartWith("System.", "Microsoft.") == false)
+                    .Where(x => x.FullNameStartsWith("System.", "Microsoft.") == false)
                     .SelectMany(
                         x =>
                         {
