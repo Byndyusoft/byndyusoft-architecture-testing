@@ -142,7 +142,7 @@
             return model.SoftwareSystems
                 .Where(x => x.IsExternalSystem() == false)
                 .SelectMany(x => x.Containers)
-                .Where(x => x.IsDatabase() == false && x.IsMq() == false)
+                .Where(x => x.IsStorage() == false && x.IsMq() == false)
                 .Select(
                     x => MapToService(
                         elementsByIds,

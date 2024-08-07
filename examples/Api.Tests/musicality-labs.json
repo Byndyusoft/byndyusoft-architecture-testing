@@ -34,58 +34,66 @@
       "tags" : "Element,MQ"
     } ],
     "softwareSystems" : [ {
-      "containers" : [ {
-        "documentation" : { },
-        "id" : "3",
-        "name" : "Storage Worker",
-        "properties" : {
-          "structurizr.dsl.identifier" : "storageworker"
-        },
-        "relationships" : [ {
-          "description" : "Changes",
-          "destinationId" : "4",
-          "id" : "5",
-          "properties" : {
-            "structurizr.dsl.identifier" : "640e21c6-67d2-4c8f-96ba-abcb80762a5f"
+      "containers": [
+        {
+          "documentation": {},
+          "id": "3",
+          "name": "Storage Worker",
+          "properties": {
+            "structurizr.dsl.identifier": "storageworker"
           },
-          "sourceId" : "3",
-          "tags" : "Relationship,Sync",
-          "technology" : "REST"
-        } ],
-        "tags" : "Element,Container,Worker",
-        "technology" : ".NET Core",
-        "url" : "https://github.com/MusicalityLabs/musicality-labs-storage-worker"
-      }, {
-        "documentation" : { },
-        "id" : "4",
-        "name" : "Storage Api",
-        "properties" : {
-          "structurizr.dsl.identifier" : "storageapi"
+          "relationships": [
+            {
+              "description": "Changes",
+              "destinationId": "4",
+              "id": "5",
+              "properties": {
+                "structurizr.dsl.identifier": "640e21c6-67d2-4c8f-96ba-abcb80762a5f"
+              },
+              "sourceId": "3",
+              "tags": "Relationship,Sync",
+              "technology": "REST"
+            }
+          ],
+          "tags": "Element,Container,Worker",
+          "technology": ".NET Core",
+          "url": "https://github.com/MusicalityLabs/musicality-labs-storage-worker"
         },
-        "relationships" : [ {
-          "description" : "Changes",
-          "destinationId" : "6",
-          "id" : "7",
-          "properties" : {
-            "structurizr.dsl.identifier" : "55219b68-88b9-49c8-9003-903725a1b00b"
+        {
+          "documentation": {},
+          "id": "4",
+          "name": "Storage Api",
+          "properties": {
+            "structurizr.dsl.identifier": "storageapi"
           },
-          "sourceId" : "4",
-          "tags" : "Relationship,Sync",
-          "technology" : "SQL"
-        } ],
-        "tags" : "Element,Container,WebApi",
-        "technology" : ".NET Core",
-        "url" : "https://github.com/MusicalityLabs/musicality-labs-storage-api"
-      }, {
-        "documentation" : { },
-        "id" : "6",
-        "name" : "storageapi",
-        "properties" : {
-          "structurizr.dsl.identifier" : "storagedatabase"
+          "relationships": [
+            {
+              "description": "Changes",
+              "destinationId": "6",
+              "id": "7",
+              "properties": {
+                "structurizr.dsl.identifier": "55219b68-88b9-49c8-9003-903725a1b00b"
+              },
+              "sourceId": "4",
+              "tags": "Relationship,Sync",
+              "technology": "SQL"
+            }
+          ],
+          "tags": "Element,Container,WebApi",
+          "technology": ".NET Core",
+          "url": "https://github.com/MusicalityLabs/musicality-labs-storage-api"
         },
-        "tags" : "Element,Container,Database",
-        "technology" : "PostgreSQL"
-      } ],
+        {
+          "documentation": {},
+          "id": "6",
+          "name": "storageapi",
+          "properties": {
+            "structurizr.dsl.identifier": "storagedatabase"
+          },
+          "tags": "Element,Container,Storage",
+          "technology": "PostgreSQL"
+        }
+      ],
       "documentation" : { },
       "id" : "2",
       "location" : "Unspecified",
@@ -106,16 +114,20 @@
       "lastSavedView" : "Container-001",
       "metadataSymbols" : "SquareBrackets",
       "styles" : {
-        "elements" : [ {
-          "background" : "#7f7f7f",
-          "tag" : "ExternalSystem"
-        }, {
-          "shape" : "Cylinder",
-          "tag" : "Database"
-        }, {
-          "shape" : "Pipe",
-          "tag" : "MQ"
-        } ],
+        "elements": [
+          {
+            "background": "#7f7f7f",
+            "tag": "ExternalSystem"
+          },
+          {
+            "shape": "Cylinder",
+            "tag": "Storage"
+          },
+          {
+            "shape": "Pipe",
+            "tag": "MQ"
+          }
+        ],
         "relationships" : [ {
           "dashed" : false,
           "tag" : "Sync"

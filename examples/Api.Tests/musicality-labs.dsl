@@ -20,7 +20,7 @@ workspace {
                 storageWorker -> this "Changes" "REST" "Sync"
             }
             storageDatabase = container "storageapi" {
-                tags "Database" 
+                tags "Storage" 
                 technology "PostgreSQL"
                 
                 storageApi -> this "Changes" "SQL" "Sync"
@@ -45,7 +45,7 @@ workspace {
             element "ExternalSystem" {
                 background #7f7f7f
             }
-            element "Database" {
+            element "Storage" {
                 shape cylinder
             }
             element "MQ" {

@@ -1,5 +1,5 @@
 workspace {
-
+    
     model {
         
         changesMQ = element "musicality_labs.data.changes" "RabbitMQ" {
@@ -9,43 +9,43 @@ workspace {
         storage = softwareSystem "Storage" {
             storageWorker = container "Storage Worker" {
                 tags "Worker" 
-				technology ".NET Core"
-				url "https://github.com/MusicalityLabs/musicality-labs-storage-worker"
+                technology ".NET Core"
+                url "https://github.com/MusicalityLabs/musicality-labs-storage-worker"
             }
             storageApi = container "Storage Api" {
                 tags "WebApi" 
-				technology ".NET Core"
-				url "https://github.com/MusicalityLabs/musicality-labs-storage-api"
-				
+                technology ".NET Core"
+                url "https://github.com/MusicalityLabs/musicality-labs-storage-api"
+                
                 storageWorker -> this "Changes" "REST" "Sync"
             }
-			storageDatabase = container "storageapi" {
-                tags "Database" 
-				technology "PostgreSQL"
-				
+            storageDatabase = container "storageapi" {
+                tags "Storage" 
+                technology "PostgreSQL"
+                
                 storageApi -> this "Changes" "SQL" "Sync"
             }
         }
-                       
+        
         changesMQ -> storageWorker "Changes" "AMQP" "Async"
     }
-
+    
     views {
         systemLandscape {
             include * 
-			autolayout lr
+            autolayout lr
         }
-		
-		container storage {
+        
+        container storage {
             include *
             autolayout lr
         }
-		        
+        
         styles {
             element "ExternalSystem" {
                 background #7f7f7f
             }
-            element "Database" {
+            element "Storage" {
                 shape cylinder
             }
             element "MQ" {
@@ -54,16 +54,16 @@ workspace {
             relationship "Sync" {
                 dashed false
             }
-			relationship "Async" {
+            relationship "Async" {
                 dashed true
             }
-			relationship "TechDebt" {
-				color red
-			}
+            relationship "TechDebt" {
+                color red
+            }
         }
-       
+        
         theme default
-
+    
     }
     
 }
