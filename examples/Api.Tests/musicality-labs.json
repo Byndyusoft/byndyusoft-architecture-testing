@@ -1,0 +1,221 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-javascript",
+  "lastModifiedDate" : "2024-06-27T18:15:36Z",
+  "model" : {
+    "customElements" : [ {
+      "id" : "1",
+      "metadata" : "RabbitMQ",
+      "name" : "musicality_labs.data.changes",
+      "properties" : {
+        "structurizr.dsl.identifier" : "changesmq"
+      },
+      "relationships" : [ {
+        "description" : "Changes",
+        "destinationId" : "3",
+        "id" : "8",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cd68ff6f-c752-46dd-8e1f-b23e59be94b1"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship,Async",
+        "technology" : "AMQP"
+      }, {
+        "description" : "Changes",
+        "destinationId" : "2",
+        "id" : "9",
+        "linkedRelationshipId" : "8",
+        "sourceId" : "1",
+        "technology" : "AMQP"
+      } ],
+      "tags" : "Element,MQ"
+    } ],
+    "softwareSystems" : [ {
+      "containers": [
+        {
+          "documentation": {},
+          "id": "3",
+          "name": "Storage Worker",
+          "properties": {
+            "structurizr.dsl.identifier": "storageworker"
+          },
+          "relationships": [
+            {
+              "description": "Changes",
+              "destinationId": "4",
+              "id": "5",
+              "properties": {
+                "structurizr.dsl.identifier": "640e21c6-67d2-4c8f-96ba-abcb80762a5f"
+              },
+              "sourceId": "3",
+              "tags": "Relationship,Sync",
+              "technology": "REST"
+            }
+          ],
+          "tags": "Element,Container,Worker",
+          "technology": ".NET Core",
+          "url": "https://github.com/MusicalityLabs/musicality-labs-storage-worker"
+        },
+        {
+          "documentation": {},
+          "id": "4",
+          "name": "Storage Api",
+          "properties": {
+            "structurizr.dsl.identifier": "storageapi"
+          },
+          "relationships": [
+            {
+              "description": "Changes",
+              "destinationId": "6",
+              "id": "7",
+              "properties": {
+                "structurizr.dsl.identifier": "55219b68-88b9-49c8-9003-903725a1b00b"
+              },
+              "sourceId": "4",
+              "tags": "Relationship,Sync",
+              "technology": "SQL"
+            }
+          ],
+          "tags": "Element,Container,WebApi",
+          "technology": ".NET Core",
+          "url": "https://github.com/MusicalityLabs/musicality-labs-storage-api"
+        },
+        {
+          "documentation": {},
+          "id": "6",
+          "name": "storageapi",
+          "properties": {
+            "structurizr.dsl.identifier": "storagedatabase"
+          },
+          "tags": "Element,Container,Storage",
+          "technology": "PostgreSQL"
+        }
+      ],
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Storage",
+      "properties" : {
+        "structurizr.dsl.identifier" : "storage"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Name",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CiAgICAgICAgCiAgICAgICAgY2hhbmdlc01RID0gZWxlbWVudCAibXVzaWNhbGl0eV9sYWJzLmRhdGEuY2hhbmdlcyIgIlJhYmJpdE1RIiB7CiAgICAgICAgICAgIHRhZ3MgIk1RIiAKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgc3RvcmFnZSA9IHNvZnR3YXJlU3lzdGVtICJTdG9yYWdlIiB7CiAgICAgICAgICAgIHN0b3JhZ2VXb3JrZXIgPSBjb250YWluZXIgIlN0b3JhZ2UgV29ya2VyIiB7CiAgICAgICAgICAgICAgICB0YWdzICJXb3JrZXIiIAoJCQkJdGVjaG5vbG9neSAiLk5FVCBDb3JlIgoJCQkJdXJsICJodHRwczovL2dpdGh1Yi5jb20vTXVzaWNhbGl0eUxhYnMvbXVzaWNhbGl0eS1sYWJzLXN0b3JhZ2Utd29ya2VyIgogICAgICAgICAgICB9CiAgICAgICAgICAgIHN0b3JhZ2VBcGkgPSBjb250YWluZXIgIlN0b3JhZ2UgQXBpIiB7CiAgICAgICAgICAgICAgICB0YWdzICJXZWJBcGkiIAoJCQkJdGVjaG5vbG9neSAiLk5FVCBDb3JlIgoJCQkJdXJsICJodHRwczovL2dpdGh1Yi5jb20vTXVzaWNhbGl0eUxhYnMvbXVzaWNhbGl0eS1sYWJzLXN0b3JhZ2Utd29ya2VyIgoJCQkJCiAgICAgICAgICAgICAgICBzdG9yYWdlV29ya2VyIC0+IHRoaXMgIkNoYW5nZXMiICJSRVNUIiAiU3luYyIKICAgICAgICAgICAgfQoJCQlzdG9yYWdlRGF0YWJhc2UgPSBjb250YWluZXIgInN0b3JhZ2VhcGkiIHsKICAgICAgICAgICAgICAgIHRhZ3MgIkRhdGFiYXNlIiAKCQkJCXRlY2hub2xvZ3kgIlBvc3RncmVTUUwiCgkJCQkKICAgICAgICAgICAgICAgIHN0b3JhZ2VBcGkgLT4gdGhpcyAiQ2hhbmdlcyIgIlNRTCIgIlN5bmMiCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgY2hhbmdlc01RIC0+IHN0b3JhZ2VXb3JrZXIgIkNoYW5nZXMiICJBTVFQIiAiQXN5bmMiCiAgICB9CgogICAgdmlld3MgewogICAgICAgIHN5c3RlbUxhbmRzY2FwZSB7CiAgICAgICAgICAgIGluY2x1ZGUgKiAKCQkJYXV0b2xheW91dCBscgogICAgICAgIH0KCQkKCQljb250YWluZXIgc3RvcmFnZSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoJCSAgICAgICAgCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiRXh0ZXJuYWxTeXN0ZW0iIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzdmN2Y3ZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBjeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIk1RIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBwaXBlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgcmVsYXRpb25zaGlwICJTeW5jIiB7CiAgICAgICAgICAgICAgICBkYXNoZWQgZmFsc2UKICAgICAgICAgICAgfQoJCQlyZWxhdGlvbnNoaXAgIkFzeW5jIiB7CiAgICAgICAgICAgICAgICBkYXNoZWQgdHJ1ZQogICAgICAgICAgICB9CgkJCXJlbGF0aW9uc2hpcCAiVGVjaERlYnQiIHsKCQkJCWNvbG9yIHJlZAoJCQl9CiAgICAgICAgfQogICAgICAgCiAgICAgICAgdGhlbWUgZGVmYXVsdAoKICAgIH0KICAgIAp9Cg=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "Container-001",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements": [
+          {
+            "background": "#7f7f7f",
+            "tag": "ExternalSystem"
+          },
+          {
+            "shape": "Cylinder",
+            "tag": "Storage"
+          },
+          {
+            "shape": "Pipe",
+            "tag": "MQ"
+          }
+        ],
+        "relationships" : [ {
+          "dashed" : false,
+          "tag" : "Sync"
+        }, {
+          "dashed" : true,
+          "tag" : "Async"
+        }, {
+          "color" : "#ff0000",
+          "tag" : "TechDebt"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 811,
+        "width" : 3120
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 199,
+        "y" : 219
+      }, {
+        "id" : "3",
+        "x" : 949,
+        "y" : 219
+      }, {
+        "id" : "4",
+        "x" : 1699,
+        "y" : 219
+      }, {
+        "id" : "6",
+        "x" : 2449,
+        "y" : 219
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Container-001",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "5"
+      }, {
+        "id" : "7"
+      }, {
+        "id" : "8"
+      } ],
+      "softwareSystemId" : "2"
+    } ],
+    "systemLandscapeViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 700,
+        "width" : 1600
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 200,
+        "y" : 200
+      }, {
+        "id" : "2",
+        "x" : 950,
+        "y" : 200
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "generatedKey" : true,
+      "key" : "SystemLandscape-001",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "9"
+      } ]
+    } ]
+  }
+}

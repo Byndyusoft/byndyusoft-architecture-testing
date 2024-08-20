@@ -1,0 +1,29 @@
+<Project>
+
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common.props))\common.props" />
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>9</LangVersion>
+		<IsPackable>true</IsPackable>
+
+		<Authors>Byndyusoft</Authors>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Byndyusoft/byndyusoft-architecture-testing</RepositoryUrl>
+
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageTags>Byndyusoft; AaC</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project>
+
+	<PropertyGroup>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<AssemblyName>MusicalityLabs.Storage.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>MusicalityLabs.Storage.$(MSBuildProjectName)</RootNamespace>
+		<LangVersion>9</LangVersion>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+</Project>
