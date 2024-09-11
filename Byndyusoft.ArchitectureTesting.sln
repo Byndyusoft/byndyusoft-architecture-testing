@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation.StorageDependenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.ApiDependencyValidators", "src\Validation.ApiDependencyValidators\Validation.ApiDependencyValidators.csproj", "{7A7D8C81-CE36-4E92-8B08-D19DF903B23F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyValidators.Tests", "tests\DependencyValidators.Tests\DependencyValidators.Tests.csproj", "{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{7A7D8C81-CE36-4E92-8B08-D19DF903B23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A7D8C81-CE36-4E92-8B08-D19DF903B23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A7D8C81-CE36-4E92-8B08-D19DF903B23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{DB9964A3-5C44-453D-8066-BEA6A9920209} = {3E802220-D845-4B0F-9F98-ACCE8861F90D}
 		{368D567C-90A9-40A8-B5A1-4F624754A062} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
 		{7A7D8C81-CE36-4E92-8B08-D19DF903B23F} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
+		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC} = {ECEA017E-7CB0-4E1C-8D29-9E38D39CD3C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A79E4AD9-244B-42E6-BD30-255B9C3DEC46}
