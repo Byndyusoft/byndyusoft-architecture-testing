@@ -83,7 +83,7 @@
                           Dependencies = Array.Empty<DependencyBase>(),
                           ServiceImplementation = CreateServiceImplementation(
                               services => services
-                                  .AddMockLogger(MockLoggerExtensions.CreateMockLogger())
+                                  .AddNullLogger()
                                   .AddKafkaBus(new KafkaSettings {Hosts = new[] {"localhost"}})
                           ),
                           ExpectedErrors
@@ -112,7 +112,7 @@
                                 },
                           ServiceImplementation = CreateServiceImplementation(
                               services => services
-                                  .AddMockLogger(MockLoggerExtensions.CreateMockLogger())
+                                  .AddNullLogger()
                                   .AddKafkaBus(new KafkaSettings {Hosts = new[] {"localhost"}})
                           ),
                           ExpectedErrors = Array.Empty<string>()
