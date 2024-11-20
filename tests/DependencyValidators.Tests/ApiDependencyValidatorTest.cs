@@ -29,6 +29,13 @@
                   {
                       new DependencyValidatorTestCase
                       {
+                          Description = "There are no API dependencies in either the architecture or the application",
+                          Dependencies = Array.Empty<DependencyBase>(),
+                          ServiceImplementation = new ServiceImplementation {ServiceAssemblies = Array.Empty<Assembly>()},
+                          ExpectedErrors = Array.Empty<string>()
+                      },
+                      new DependencyValidatorTestCase
+                      {
                           Description = "A dependency missing from the architecture has been added to the service",
                           Dependencies = Array.Empty<DependencyBase>(),
                           ServiceImplementation = new ServiceImplementation {ServiceAssemblies = new[] {CreateAssembly(clientAssemblyName)}},
