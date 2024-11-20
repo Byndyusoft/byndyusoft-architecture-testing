@@ -34,6 +34,13 @@
                   {
                       new DependencyValidatorTestCase
                       {
+                          Description = "There are no dependencies on Kafka in either the architecture or the application",
+                          Dependencies = Array.Empty<DependencyBase>(),
+                          ServiceImplementation = CreateServiceImplementation(),
+                          ExpectedErrors = Array.Empty<string>()
+                      },
+                      new DependencyValidatorTestCase
+                      {
                           Description = "Kafka message producer from the architecture was not implemented in the service",
                           Dependencies
                               = new DependencyBase[]
