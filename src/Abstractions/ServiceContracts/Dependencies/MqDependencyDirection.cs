@@ -12,13 +12,13 @@
         /// <summary>
         /// Сервис получает данные из очереди
         /// </summary>
-        [Description("Consumer")]
+        [Description("Message handler")]
         Incoming = 1,
 
         /// <summary>
         /// Сервис отправляет данные в очередь
         /// </summary>
-        [Description("Producer")]
+        [Description("Message producer")]
         Outgoing = 2
     }
 }

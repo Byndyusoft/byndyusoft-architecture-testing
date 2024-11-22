@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+	  <PackageReference Include="Byndyusoft.Net.Kafka.Abstractions" Version="1.1.0" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Abstractions\Abstractions.csproj" />
+	</ItemGroup>
+</Project>

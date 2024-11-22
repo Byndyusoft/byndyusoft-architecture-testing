@@ -1,6 +1,5 @@
 ﻿namespace MusicalityLabs.Storage.DataAccess.SoundSignatures
 {
-    using System.Data.Common;
     using System.Threading;
     using System.Threading.Tasks;
     using Api.Contracts.SoundSignatures;
