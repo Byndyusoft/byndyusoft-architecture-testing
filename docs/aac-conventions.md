@@ -6,8 +6,18 @@ To explicitly indicate the boundaries of the designed system, all external syste
 
 ### Example
 ```
-pim = softwareSystem "PIM" {
-    tags "ExternalSystem"
-    ...
+model {
+  pim = softwareSystem "PIM" {
+      tags "ExternalSystem"
+      ...
+  }
+}
+views {
+  ...
+  styles {
+    element "ExternalSystem" {
+      background #7f7f7f
+    }
+  }
 }
 ```
