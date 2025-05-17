@@ -24,3 +24,17 @@ views {
 ```
 
 <img src="assets/ExternalSystem.jpg" height="150">
+
+## Documenting system elements
+
+Elements of the system are given meaningful names and descriptions that answer the questions “what is it” and “why is it needed”.
+
+### Example
+
+```
+storageWorker = container "Storage Worker" "Processes changes from queue" {
+	...
+}
+```
+
+<img src="assets/ElementDocumentation.jpg" height="150">
