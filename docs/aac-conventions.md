@@ -38,3 +38,18 @@ storageWorker = container "Storage Worker" "Processes changes from queue" {
 ```
 
 <img src="assets/ElementDocumentation.jpg" height="150">
+
+## Linking elements to code
+
+Links to the corresponding repositories are added to the system elements. This will allow the user, both human and automated, to easily move from the abstractions of architecture to the reality of the code that implements it.
+
+### Example
+
+```
+storageWorker = container "..." "..." {
+    url "https://github.com/…"
+	...
+}
+```
+
+<img src="assets/RepositoryLink.jpg" height="150">
