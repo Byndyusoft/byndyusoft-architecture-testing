@@ -68,3 +68,35 @@ storageWorker = container "..." "..." {
 ```
 
 <img src="assets/ElementTechnology.jpg" height="150">
+
+## Typing of system elements
+
+System elements are typed using tags, for example:
+- **Storage** for S3 or databases;
+- **MQ** for queues;
+- **Frontend** for user interfaces.
+
+This will help to visually separate the elements of architecture of different types, and the automation will improve the quality of analysis.
+
+### Example
+
+```
+model {
+  pim = softwareSystem "PIM" {
+    s3 = container "..." "..." {
+      tags "Storage" 
+        ...
+    }
+  }
+}
+views {
+  ...
+  styles {
+    element "Storage" {
+	shape cylinder
+    }
+  }
+}
+```
+
+<img src="assets/ElementType.jpg" height="150">
