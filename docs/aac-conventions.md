@@ -100,3 +100,27 @@ views {
 ```
 
 <img src="assets/ElementType.jpg" height="150">
+
+# Explicit declaring of message queues
+
+Message queues are explicitly declared on the architecture using containers or untyped elements. This allows visual demonstration of who writes where, who reads from where, and at the same time readers and writers do not know about each other. In addition, due to the explicit declaration of queues, the code of automatic analyzers is simplified.
+
+### Example
+
+```
+model {
+  changesMQ = element "musicality_labs.data.changes" "RabbitMQ" {
+    tags "MQ" 
+  }
+}
+views {
+  ...
+  styles {
+    element "MQ" {
+      shape pipe
+    }
+  }
+}
+```
+
+<img src="assets/MessageQueueExample.jpg" height="150">
