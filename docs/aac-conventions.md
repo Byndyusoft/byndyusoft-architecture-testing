@@ -48,7 +48,7 @@ Links to the corresponding repositories are added to the system elements. This w
 ```
 storageWorker = container "..." "..." {
     url "https://github.com/…"
-	...
+    ...
 }
 ```
 
@@ -85,7 +85,7 @@ model {
   pim = softwareSystem "PIM" {
     s3 = container "..." "..." {
       tags "Storage" 
-        ...
+      ...
     }
   }
 }
@@ -93,7 +93,7 @@ views {
   ...
   styles {
     element "Storage" {
-	shape cylinder
+      shape cylinder
     }
   }
 }
@@ -101,7 +101,7 @@ views {
 
 <img src="assets/ElementType.jpg" height="150">
 
-# Explicit declaring of message queues
+## Explicit declaring of message queues
 
 Message queues are explicitly declared on the architecture using containers or untyped elements. This allows visual demonstration of who writes where, who reads from where, and at the same time readers and writers do not know about each other. In addition, due to the explicit declaration of queues, the code of automatic analyzers is simplified.
 
@@ -124,3 +124,30 @@ views {
 ```
 
 <img src="assets/MessageQueueExample.jpg" height="150">
+
+## Marking of obsolete system elements
+
+Obsolete but still active system elements are marked with a tag `Obsolete`. This allows the user to visually determine which elements are worth interacting with and which are not. In addition, the automatic analyzer will be able to calculate the corresponding metrics.
+
+### Example
+
+```
+model {
+  pim = softwareSystem "PIM" {
+    storageApi = container "..." "..."{
+      tags "WebApi, Obsolete" 
+	  ...
+    }
+  }
+}
+views {
+  ...
+  styles {
+    element "Obsolete" {
+      background #e0ecf2
+    }
+  }
+}
+```
+
+<img src="assets/ObsoleteElementExample.jpg" height="150">
