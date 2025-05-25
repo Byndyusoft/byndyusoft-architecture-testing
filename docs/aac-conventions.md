@@ -151,3 +151,16 @@ views {
 ```
 
 <img src="assets/ObsoleteElementExample.jpg" height="150">
+
+## Direction of relationships between system elements
+
+In order to distinguish, both visually and by automatic analysis, which elements of the system depend on which, the relationships are directed according to the rules listed below.
+
+1. If an element sends messages to a queue, then the relationship is directed from it to the queue.
+<img src="assets/SendingMessageToQueueExample.jpg" height="80">
+
+2. If an element receives messages from a queue, then the relationship is directed from the queue to it.
+<img src="assets/ReceivingMessageFromQueueExample.jpg" height="80">
+
+3. The relationship is directed from element A to element B if element A knows about element B and calls it.
+<img src="assets/TwoElementsInteractionExample.jpg" height="80">
