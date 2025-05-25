@@ -196,7 +196,41 @@ Using the `Sync` and `Async` tags, relationships are divided into synchronous an
 ### Example
 
 ```
-changesMQ -> storageWorker "..." "..." "Async"
+model {
+  ...
+  changesMQ -> storageWorker "..." "..." "Async"
+}
+views {
+  ...
+  styles {
+    relationship "Async" {
+      dashed true
+    }
+  }
+}
 ```
 
 <img src="assets/RelationshipTypeExample.jpg" height="150">
+
+## Technical debts
+
+Technical debts, when it comes to relationships, are marked using the `TechDebt` tag. This allows the user to visually track technical debts at the architecture level, and the automation to calculate the corresponding metrics.
+
+### Example
+
+```
+model {
+  ...
+  storageWorker -> storageDatabase "Changes" "SQL" "Sync, TechDebt"
+}
+views {
+  ...
+  styles {
+    relationship "TechDebt" {
+      color red
+    }
+  }
+}
+```
+
+<img src="assets/RelationshipTechnicalDebtExample.jpg" height="150">
