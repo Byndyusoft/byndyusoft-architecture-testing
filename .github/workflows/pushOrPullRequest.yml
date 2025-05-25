@@ -1,6 +1,8 @@
 name: Push or Pull request
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
   pull_request:
 
 jobs:
