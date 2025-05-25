@@ -23,7 +23,7 @@ views {
 }
 ```
 
-<img src="assets/ExternalSystem.jpg" height="150">
+<img src="assets/ExternalSystemExample.jpg" height="150">
 
 ## Documenting system elements
 
@@ -37,7 +37,7 @@ storageWorker = container "Storage Worker" "Processes changes from queue" {
 }
 ```
 
-<img src="assets/ElementDocumentation.jpg" height="150">
+<img src="assets/ElementDocumentationExample.jpg" height="150">
 
 ## Linking system elements to code
 
@@ -52,7 +52,7 @@ storageWorker = container "..." "..." {
 }
 ```
 
-<img src="assets/RepositoryLink.jpg" height="150">
+<img src="assets/RepositoryLinkExample.jpg" height="150">
 
 ## Specifying the technologies of system elements
 
@@ -67,7 +67,7 @@ storageWorker = container "..." "..." {
 }
 ```
 
-<img src="assets/ElementTechnology.jpg" height="150">
+<img src="assets/ElementTechnologyExample.jpg" height="150">
 
 ## Typing of system elements
 
@@ -99,7 +99,7 @@ views {
 }
 ```
 
-<img src="assets/ElementType.jpg" height="150">
+<img src="assets/ElementTypeExample.jpg" height="150">
 
 ## Explicit declaring of message queues
 
@@ -172,7 +172,19 @@ For each relationship, a description of what is transmitted within it is added, 
 ### Example
 
 ```
-changesMQ -> storageWorker "Changes" "AMQP" "Async"
+changesMQ -> storageWorker "Changes" "..." "..."
 ```
 
 <img src="assets/RelationshipDocumentationExample.jpg" height="150">
+
+## Specifying the technologies of relationships
+
+For each relationship, the technology used to organize it is specified. This will help the user understand what this or that relationship is based on, and the automation will improve the accuracy of the analysis.
+
+### Example
+
+```
+changesMQ -> storageWorker "..." "AMQP" "..."
+```
+
+<img src="assets/RelationshipTechnologyExample.jpg" height="150">
