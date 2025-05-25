@@ -164,3 +164,15 @@ In order to distinguish, both visually and by automatic analysis, which elements
 
 3. The relationship is directed from element A to element B if element A knows about element B and calls it.
 <img src="assets/TwoElementsInteractionExample.jpg" height="80">
+
+## Documenting relationships
+
+For each relationship, a description of what is transmitted within it is added, which can be used to answer the question of why this relationship is needed.
+
+### Example
+
+```
+changesMQ -> storageWorker "Changes" "AMQP" "Async"
+```
+
+<img src="assets/RelationshipDocumentationExample.jpg" height="150">
