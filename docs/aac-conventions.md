@@ -188,3 +188,15 @@ changesMQ -> storageWorker "..." "AMQP" "..."
 ```
 
 <img src="assets/RelationshipTechnologyExample.jpg" height="150">
+
+## Typing of relationships
+
+Using the `Sync` and `Async` tags, relationships are divided into synchronous and asynchronous. This will allow the user to quickly understand how the interaction of elements is organized, as well as improve the quality of automated analysis.
+
+### Example
+
+```
+changesMQ -> storageWorker "..." "..." "Async"
+```
+
+<img src="assets/RelationshipTypeExample.jpg" height="150">
