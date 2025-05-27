@@ -74,7 +74,10 @@ storageWorker = container "..." "..." {
 System elements are typed using tags, for example:
 - **Storage** for S3 or databases;
 - **MQ** for queues;
-- **Frontend** for user interfaces.
+- **Worker** for queue consumers;
+- **CronJob** for scheduled jobs;
+- **WebApi** for web APIs;
+- **Frontend** for user interfaces;
 
 This will help to visually separate the elements of architecture of different types, and the automation will improve the quality of analysis.
 
