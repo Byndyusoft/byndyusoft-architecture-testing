@@ -77,7 +77,7 @@ System elements are typed using tags, for example:
 - **Worker** for queue consumers;
 - **CronJob** for scheduled jobs;
 - **WebApi** for web APIs;
-- **Frontend** for user interfaces;
+- **Frontend** for user interfaces.
 
 This will help to visually separate the elements of architecture of different types, and the automation will improve the quality of analysis.
 
