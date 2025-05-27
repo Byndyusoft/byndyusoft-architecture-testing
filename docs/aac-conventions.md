@@ -127,7 +127,7 @@ views {
 
 ## Marking of obsolete system elements
 
-Obsolete but still active system elements are marked with a tag `Obsolete`. This allows the user to visually determine which elements are worth interacting with and which are not. In addition, the automatic analyzer will be able to calculate the corresponding metrics.
+Obsolete but still active system elements are marked with a tag `Obsolete`. This allows the user to visually determine which elements are worth interacting with and which are not. In addition, the automatic analyzer will be able to calculate the metric of the number of uses of obsolete system elements.
 
 ### Example
 
