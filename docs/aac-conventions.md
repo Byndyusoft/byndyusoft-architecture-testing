@@ -2,7 +2,7 @@
 
 ## Explicit boundaries of the system
 
-To explicitly indicate the boundaries of the designed system, all external systems are marked with a tag `ExternalSystem`. This makes it easy to recognize the designed system  on the diagram both visually and through automatic analysis.
+To explicitly indicate the boundaries of the designed system, all external systems are marked with a tag `ExternalSystem`. This makes it easy to recognize the designed system on the diagram visually and during automatic validation of architecture implementation.
 
 ### Example
 
@@ -56,7 +56,7 @@ storageWorker = container "..." "..." {
 
 ## Specifying the technologies of system elements
 
-For each element of the system, the technologies used are specified. This will help the user understand what this or that element is based on, and the automation will improve the accuracy of the analysis.
+For each element of the system, the technologies used are specified. This will help the user understand what this or that element is based on, and when architecture implementation validation, the automation will correctly analyze each system element.
 
 ### Example
 
@@ -79,7 +79,7 @@ System elements are typed using tags, for example:
 - **WebApi** for web APIs;
 - **Frontend** for user interfaces.
 
-This will help to visually separate the elements of architecture of different types, and the automation will improve the quality of analysis.
+This will help to visually separate the elements of architecture of different types, and when architecture implementation validation, the automation will correctly analyze each system element.
 
 ### Example
 
@@ -182,7 +182,7 @@ changesMQ -> storageWorker "Changes" "..." "..."
 
 ## Specifying the technologies of relationships
 
-For each relationship, the technology used to organize it is specified. This will help the user understand what this or that relationship is based on, and the automation will improve the accuracy of the analysis.
+For each relationship, the technology used to organize it is specified. This will help the user understand what this or that relationship is based on, and when architecture implementation validation, the automation will correctly analyze related system elements.
 
 ### Example
 
@@ -194,7 +194,7 @@ changesMQ -> storageWorker "..." "AMQP" "..."
 
 ## Typing of relationships
 
-Using the `Sync` and `Async` tags, relationships are divided into synchronous and asynchronous. This will allow the user to quickly understand how the interaction of elements is organized, as well as improve the quality of automated analysis.
+Using the `Sync` and `Async` tags, relationships are divided into synchronous and asynchronous. This will allow the user to quickly understand how the interaction of elements is organized, and when architecture implementation validation, the automation will correctly analyze related system elements. In addition, the automatic analyzer will be able to calculate the metric of the number of relationships for each type.
 
 ### Example
 
@@ -217,7 +217,7 @@ views {
 
 ## Technical debts
 
-Technical debts, when it comes to relationships, are marked using the `TechDebt` tag. This allows the user to visually track technical debts at the architecture level, and the automation to calculate the corresponding metrics.
+echnical debts, when it comes to relationships, are marked using the `TechDebt` tag, this allows the user to visually track them at the architecture level. In addition, the automatic analyzer will be able to calculate the metric of the number of technical debts in the system.
 
 ### Example
 
