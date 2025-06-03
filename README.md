@@ -13,7 +13,7 @@ Main concept:
 - primitives from this repository inside the test compare the description of the service on the architecture with its implementation and produce a list of inconsistencies.
 
 How to implement:
-- describe the architecture as code and store it in a Git repository;
+- describe the architecture as code using [conventions](docs/aac-conventions.md) and store it in a Git repository;
 - set up versioning and sharing of the architecture, for example, using NuGet packages;
 - create a project in the service to test its architecture;
 - add package with architecture to the project; 
