@@ -217,7 +217,7 @@ views {
 
 ## Technical debts
 
-echnical debts, when it comes to relationships, are marked using the `TechDebt` tag, this allows the user to visually track them at the architecture level. In addition, the automatic analyzer will be able to calculate the metric of the number of technical debts in the system.
+Technical debts, when it comes to relationships, are marked using the `TechDebt` tag, this allows the user to visually track them at the architecture level. In addition, the automatic analyzer will be able to calculate the metric of the number of technical debts in the system.
 
 ### Example
 
