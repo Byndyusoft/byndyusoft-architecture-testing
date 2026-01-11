@@ -12,7 +12,8 @@
         }
 
         public Task<SoundSignature> Save(SoundSignature soundSignature, CancellationToken cancellationToken)
-            => DbSession.QuerySingleAsync<SoundSignature>(
+        {
+            var query = new QueryObject<SoundSignature>(
                 @"
 insert into public.sound_signatures
 (   
@@ -28,8 +29,10 @@ on conflict (id) do update
 set name = excluded.name
 returning *;
 ",
-                soundSignature,
-                cancellationToken: cancellationToken
+                soundSignature
             );
+
+            return DbSession.QuerySingleAsync(query, cancellationToken: cancellationToken);
+        }
     }
 }
