@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: install dotnet 6.0
+      - name: install dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: '8.0.x'
 
       - name: Install packages
         run: dotnet restore
