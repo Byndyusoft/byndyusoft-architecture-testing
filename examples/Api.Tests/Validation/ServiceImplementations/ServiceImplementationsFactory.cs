@@ -1,44 +1,12 @@
 ﻿namespace MusicalityLabs.Storage.Api.Tests.Validation.ServiceImplementations
 {
-    using System;
-    using System.Collections.Generic;
-    using Byndyusoft.ArchitectureTesting.Abstractions.ServiceImplementations;
+    using System.Reflection;
     using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
+    using Byndyusoft.ArchitectureTesting.ServiceImplementations;
 
-    public static class ServiceImplementationsFactory
+    public class ServiceImplementationsFactory : ServiceImplementationFactoryBase<Startup>
     {
-        private static IServiceProvider BuildServiceProvider(Type startupType)
-        {
-            var services = new ServiceCollection();
-
-            startupType.GetMethod("ConfigureServices")!.Invoke(
-                Activator.CreateInstance(
-                    startupType,
-                    new ConfigurationBuilder()
-                        .AddInMemoryCollection(new[] {new KeyValuePair<string, string>("ConnectionStrings:Main", "Server=")})
-                        .Build()
-                ),
-                new object[] {services}
-            );
-
-            return services.BuildServiceProvider(true);
-        }
-
-        public static ServiceImplementation Create(Type startupType)
-        {
-            var rootAssembly = startupType.Assembly;
-            var implementation
-                = new ServiceImplementation
-                  {
-                      ServiceAssemblies = rootAssembly.GetServiceAssemblies(
-                          x => x.FullNameStartsWith("Byndyusoft.", "MusicalityLabs.")
-                      ),
-                      ServiceProvider = BuildServiceProvider(startupType)
-                  };
-
-            return implementation;
-        }
+        protected override bool IsImplementationAssembly(AssemblyName assemblyName)
+            => assemblyName.FullNameStartsWith("Byndyusoft.", "MusicalityLabs.");
     }
 }

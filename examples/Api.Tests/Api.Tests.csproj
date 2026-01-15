@@ -33,6 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\src\ServiceImplementations\ServiceImplementations.csproj" />
 	  <ProjectReference Include="..\..\src\StructurizrParser\StructurizrParser.csproj" />
 	  <ProjectReference Include="..\..\src\Validation.StorageDependencyValidators\Validation.StorageDependencyValidators.csproj" />
 	  <ProjectReference Include="..\Api\Api.csproj" />

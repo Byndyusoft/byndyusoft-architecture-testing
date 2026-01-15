@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyValidators.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.KafkaDependencyValidators", "src\Validation.KafkaDependencyValidators\Validation.KafkaDependencyValidators.csproj", "{2308E985-AFBB-4DB5-BAE2-22356D368A3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceImplementations", "src\ServiceImplementations\ServiceImplementations.csproj", "{C0735498-E8A0-41FD-B84B-70031CDAC9F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{2308E985-AFBB-4DB5-BAE2-22356D368A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2308E985-AFBB-4DB5-BAE2-22356D368A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2308E985-AFBB-4DB5-BAE2-22356D368A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0735498-E8A0-41FD-B84B-70031CDAC9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0735498-E8A0-41FD-B84B-70031CDAC9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0735498-E8A0-41FD-B84B-70031CDAC9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0735498-E8A0-41FD-B84B-70031CDAC9F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +122,7 @@ Global
 		{7A7D8C81-CE36-4E92-8B08-D19DF903B23F} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
 		{60C0D98B-2568-4D2A-BDAE-2D6FCB2BEFBC} = {ECEA017E-7CB0-4E1C-8D29-9E38D39CD3C8}
 		{2308E985-AFBB-4DB5-BAE2-22356D368A3A} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
+		{C0735498-E8A0-41FD-B84B-70031CDAC9F6} = {9D5D61C4-D494-4124-A184-59C12C2BB2BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A79E4AD9-244B-42E6-BD30-255B9C3DEC46}

@@ -16,10 +16,9 @@
         public void ServiceShouldImplementArchitecture()
         {
             // Given
-            var startupType = typeof(Startup);
             var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
-            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(startupType.Assembly);
-            using var serviceImplementation = ServiceImplementationsFactory.Create(startupType);
+            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(typeof(Startup).Assembly);
+            using var serviceImplementation = new ServiceImplementationsFactory().Create();
 
             // When
             var serviceValidationErrors = ServiceValidatorsFactory.Create(
