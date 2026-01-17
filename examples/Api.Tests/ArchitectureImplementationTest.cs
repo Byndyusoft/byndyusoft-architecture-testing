@@ -17,7 +17,7 @@
         {
             // Given
             var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
-            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(typeof(Startup).Assembly);
+            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(typeof(Program).Assembly);
             using var serviceImplementation = new ServiceImplementationsFactory().Create();
 
             // When
