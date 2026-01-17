@@ -78,11 +78,11 @@
                 case "HostBuilt":
                     _hostInitializationTaskCompletionSource.TrySetResult((IHost)value.Value!);
                     ThrowHostAbortedException();
-                    
+
                     break;
             }
         }
-        
+
         private static TimeSpan SetupDefaultInitializationTimeout()
             => Debugger.IsAttached
                    ? Timeout.InfiniteTimeSpan
@@ -122,8 +122,9 @@
         {
             var publicHostAbortedExceptionType = Type.GetType(
                 $"Microsoft.Extensions.Hosting.{nameof(HostAbortedException)}, Microsoft.Extensions.Hosting.Abstractions",
-                throwOnError: false
+                false
             );
+
             if (publicHostAbortedExceptionType != null)
                 throw (Exception)Activator.CreateInstance(publicHostAbortedExceptionType)!;
 

@@ -1,32 +1,30 @@
-﻿namespace MusicalityLabs.Storage.Api.Tests
+﻿namespace MusicalityLabs.Storage.Api.Tests;
+
+using System;
+using System.IO;
+using Byndyusoft.ArchitectureTesting.Abstractions.Validation;
+using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
+using Byndyusoft.ArchitectureTesting.StructurizrParser;
+using Byndyusoft.ArchitectureTesting.Validation.StorageDependencyValidators;
+using FluentAssertions;
+using Validation.ServiceImplementations;
+using Xunit;
+
+public class ArchitectureImplementationTest
 {
-    using System;
-    using System.IO;
-    using Byndyusoft.ArchitectureTesting.Abstractions.Validation;
-    using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
-    using Byndyusoft.ArchitectureTesting.StructurizrParser;
-    using Byndyusoft.ArchitectureTesting.Validation.DependencyValidators;
-    using FluentAssertions;
-    using Validation.ServiceImplementations;
-    using Xunit;
-
-    public class ArchitectureImplementationTest
+    [Fact]
+    public void ServiceShouldImplementArchitecture()
     {
-        [Fact]
-        public void ServiceShouldImplementArchitecture()
-        {
-            // Given
-            var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
-            var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(typeof(Program).Assembly);
-            using var serviceImplementation = new ServiceImplementationsFactory().Create();
+        // Given
+        var parser = new JsonParser(x => x.StartsWith("musicality-labs", StringComparison.InvariantCultureIgnoreCase));
+        var serviceContract = parser.Parse(File.ReadAllText("musicality-labs.json")).FindServiceContract(typeof(Program).Assembly);
+        using var serviceImplementation = new ServiceImplementationsFactory().Create();
 
-            // When
-            var serviceValidationErrors = ServiceValidatorsFactory.Create(
-                x => x.AddDependencyValidatorsFromAssembly(typeof(DbDependencyValidator).Assembly)
-            ).Validate(serviceContract, serviceImplementation);
+        // When
+        var serviceValidationErrors = ServiceValidatorsFactory.Create(x => x.AddDependencyValidatorsFromAssembly(typeof(DbDependencyValidator).Assembly)
+        ).Validate(serviceContract, serviceImplementation);
 
-            // Then
-            serviceValidationErrors.Should().BeEmpty();
-        }
+        // Then
+        serviceValidationErrors.Should().BeEmpty();
     }
 }

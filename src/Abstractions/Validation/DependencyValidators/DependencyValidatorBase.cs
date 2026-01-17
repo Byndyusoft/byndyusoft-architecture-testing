@@ -6,7 +6,7 @@
     using ServiceImplementations;
 
     /// <summary>
-    /// Валидатор определенного типа зависимостей сервиса на соответствие описанию
+    ///     Валидатор определенного типа зависимостей сервиса на соответствие описанию
     /// </summary>
     /// <typeparam name="TDependency">Тип валидируемых зависимостей сервиса</typeparam>
     public abstract class DependencyValidatorBase<TDependency> : IDependencyValidator where TDependency : DependencyBase
@@ -14,7 +14,7 @@
         protected abstract IEnumerable<string> Validate(TDependency[] dependencies, ServiceImplementation serviceImplementation);
 
         /// <summary>
-        /// Валидирует зависимости сервиса на соответствие описанию
+        ///     Валидирует зависимости сервиса на соответствие описанию
         /// </summary>
         /// <param name="dependencies">Зависимости сервиса</param>
         /// <param name="serviceImplementation">Реализация сервиса</param>

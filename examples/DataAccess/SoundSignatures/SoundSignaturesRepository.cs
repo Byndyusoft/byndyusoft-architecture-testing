@@ -1,20 +1,20 @@
-﻿namespace MusicalityLabs.Storage.DataAccess.SoundSignatures
+﻿namespace MusicalityLabs.Storage.DataAccess.SoundSignatures;
+
+using System.Threading;
+using System.Threading.Tasks;
+using Api.Contracts.SoundSignatures;
+using Byndyusoft.Data.Relational;
+
+public class SoundSignaturesRepository : DbSessionConsumer
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Api.Contracts.SoundSignatures;
-    using Byndyusoft.Data.Relational;
-
-    public class SoundSignaturesRepository : DbSessionConsumer
+    public SoundSignaturesRepository(IDbSessionAccessor sessionAccessor) : base(sessionAccessor)
     {
-        public SoundSignaturesRepository(IDbSessionAccessor sessionAccessor) : base(sessionAccessor)
-        {
-        }
+    }
 
-        public Task<SoundSignature> Save(SoundSignature soundSignature, CancellationToken cancellationToken)
-        {
-            var query = new QueryObject<SoundSignature>(
-                @"
+    public Task<SoundSignature> Save(SoundSignature soundSignature, CancellationToken cancellationToken)
+    {
+        var query = new QueryObject<SoundSignature>(
+            @"
 insert into public.sound_signatures
 (   
     id,
@@ -29,10 +29,9 @@ on conflict (id) do update
 set name = excluded.name
 returning *;
 ",
-                soundSignature
-            );
+            soundSignature
+        );
 
-            return DbSession.QuerySingleAsync(query, cancellationToken: cancellationToken);
-        }
+        return DbSession.QuerySingleAsync(query, cancellationToken: cancellationToken);
     }
 }

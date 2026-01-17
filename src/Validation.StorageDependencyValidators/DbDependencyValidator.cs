@@ -1,6 +1,6 @@
-﻿namespace Byndyusoft.ArchitectureTesting.Validation.DependencyValidators
+﻿namespace Byndyusoft.ArchitectureTesting.Validation.StorageDependencyValidators
 {
-    using Abstractions.ServiceContracts.Dependencies;
+    using Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts.Dependencies;
 
     public class DbDependencyValidator : StorageDependencyValidatorBase<DbDependency>
     {

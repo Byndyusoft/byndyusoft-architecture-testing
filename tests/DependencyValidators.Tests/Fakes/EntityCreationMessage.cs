@@ -1,9 +1,8 @@
-﻿namespace Byndyusoft.ArchitectureTesting.DependencyValidators.Tests.Fakes
-{
-    public class EntityCreationMessage
-    {
-        public int Id { get; set; }
+﻿namespace Byndyusoft.ArchitectureTesting.DependencyValidators.Tests.Fakes;
 
-        public string Name { get; set; }
-    }
+public class EntityCreationMessage
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
 }

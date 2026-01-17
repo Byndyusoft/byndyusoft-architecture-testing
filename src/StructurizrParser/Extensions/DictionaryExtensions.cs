@@ -11,6 +11,7 @@
                 throw new ArgumentNullException(nameof(dictionary));
 
             dictionary.TryGetValue(key, out var value);
+
             return value;
         }
     }

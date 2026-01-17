@@ -1,20 +1,19 @@
-﻿
-namespace Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts
+﻿namespace Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts
 {
     using Dependencies;
 
     /// <summary>
-    /// Описание сервиса
+    ///     Описание сервиса
     /// </summary>
     public class ServiceContract
     {
         /// <summary>
-        /// Название
+        ///     Название
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Зависимости
+        ///     Зависимости
         /// </summary>
         public DependencyBase[] Dependencies { get; set; }
 

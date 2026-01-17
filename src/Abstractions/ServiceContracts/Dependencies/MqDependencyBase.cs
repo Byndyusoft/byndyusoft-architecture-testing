@@ -1,12 +1,12 @@
 ﻿namespace Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts.Dependencies
 {
     /// <summary>
-    /// Зависимость от очереди
+    ///     Зависимость от очереди
     /// </summary>
     public abstract class MqDependencyBase : DependencyBase
     {
         /// <summary>
-        /// Направление зависимости
+        ///     Направление зависимости
         /// </summary>
         public MqDependencyDirection Direction { get; set; }
     }

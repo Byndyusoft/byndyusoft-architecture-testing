@@ -12,14 +12,14 @@
     using StructurizrModel = Model.Model;
 
     /// <summary>
-    /// Парсер JSON'а, генерируемого Structurizr
+    ///     Парсер JSON'а, генерируемого Structurizr
     /// </summary>
     public class JsonParser
     {
         private readonly Func<string, bool> _serviceNameMatcher;
 
         /// <summary>
-        /// Инициализирует парсер
+        ///     Инициализирует парсер
         /// </summary>
         /// <param name="serviceNameMatcher">Матчер, распознающий имя сервиса среди сегментов Url'а его репозитория</param>
         public JsonParser(Func<string, bool> serviceNameMatcher)
@@ -55,9 +55,9 @@
         {
             var sourceElement = elementsByIds[relationship.SourceId];
             if (sourceElement.IsRabbit())
-                return new RabbitDependency {Name = sourceElement.Name, Direction = MqDependencyDirection.Incoming};
+                return new RabbitDependency { Name = sourceElement.Name, Direction = MqDependencyDirection.Incoming };
             if (sourceElement.IsKafka())
-                return new KafkaDependency {Name = sourceElement.Name, Direction = MqDependencyDirection.Incoming};
+                return new KafkaDependency { Name = sourceElement.Name, Direction = MqDependencyDirection.Incoming };
 
             throw new NotSupportedException(
                 $"Can not parse relationship {relationship} from {sourceElement} to {elementsByIds[relationship.DestinationId]}"
@@ -65,7 +65,7 @@
         }
 
         private string ExtractServiceNameFromUrl(string repositoryUrl)
-            => repositoryUrl.Split(new[] {'\\', '/'}, StringSplitOptions.RemoveEmptyEntries).Single(_serviceNameMatcher);
+            => repositoryUrl.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Single(_serviceNameMatcher);
 
         private DependencyBase MapOutgoingRelationshipToDependency(
             IReadOnlyDictionary<int, Element> elementsByIds,
@@ -76,18 +76,18 @@
             if (relationship.IsSyncCall())
             {
                 if (destinationElement.IsWebApi())
-                    return new ApiDependency {Name = ExtractServiceNameFromUrl(destinationElement.Url!)};
+                    return new ApiDependency { Name = ExtractServiceNameFromUrl(destinationElement.Url!) };
                 if (destinationElement.IsMsSql() || destinationElement.IsPostgreSql())
-                    return new DbDependency {Name = destinationElement.Name};
+                    return new DbDependency { Name = destinationElement.Name };
                 if (destinationElement.IsS3())
-                    return new S3Dependency {Name = destinationElement.Name};
+                    return new S3Dependency { Name = destinationElement.Name };
             }
             else
             {
                 if (destinationElement.IsRabbit())
-                    return new RabbitDependency {Name = destinationElement.Name, Direction = MqDependencyDirection.Outgoing};
+                    return new RabbitDependency { Name = destinationElement.Name, Direction = MqDependencyDirection.Outgoing };
                 if (destinationElement.IsKafka())
-                    return new KafkaDependency {Name = destinationElement.Name, Direction = MqDependencyDirection.Outgoing};
+                    return new KafkaDependency { Name = destinationElement.Name, Direction = MqDependencyDirection.Outgoing };
             }
 
             throw new NotSupportedException(
@@ -102,7 +102,7 @@
             Relationship[]? outgoingRelationships
         )
         {
-            var service = new ServiceContract {Name = ExtractServiceNameFromUrl(element.Url!)};
+            var service = new ServiceContract { Name = ExtractServiceNameFromUrl(element.Url!) };
 
             var dependencies = Enumerable.Empty<DependencyBase>();
             if (incomingRelationships != null)
@@ -122,7 +122,7 @@
         }
 
         /// <summary>
-        /// Парсит JSON-строку <paramref name="jsonString"/>, сгенерированную Structurizr, в объектную модель
+        ///     Парсит JSON-строку <paramref name="jsonString" />, сгенерированную Structurizr, в объектную модель
         /// </summary>
         /// <param name="jsonString">JSON-строка, сгенерированная Structurizr</param>
         public ServiceContract[] Parse(string jsonString)

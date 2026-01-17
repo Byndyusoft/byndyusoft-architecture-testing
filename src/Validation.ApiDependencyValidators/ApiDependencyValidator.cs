@@ -17,19 +17,19 @@
                 return false;
 
             return cleanedAssemblyName.EndsWith(".Api.Client".CleanString())
-                || cleanedAssemblyName.EndsWith(".Api.Clients".CleanString());
+                   || cleanedAssemblyName.EndsWith(".Api.Clients".CleanString());
         }
 
         private static bool IsRepositoryApiClientAssembly(Assembly assembly, string repositoryName)
         {
             var cleanedAssemblyName = assembly.GetName().Name!.CleanString();
             return cleanedAssemblyName.Equals($"{repositoryName}.Client".CleanString())
-                || cleanedAssemblyName.Equals($"{repositoryName}.Clients".CleanString());
+                   || cleanedAssemblyName.Equals($"{repositoryName}.Clients".CleanString());
         }
 
         private static bool IsValidServiceAssembly(Assembly serviceAssembly, IEnumerable<ApiDependency> dependencies)
             => IsApiClient(serviceAssembly) == false
-                || dependencies.Any(dependency => IsRepositoryApiClientAssembly(serviceAssembly, dependency.Name));
+               || dependencies.Any(dependency => IsRepositoryApiClientAssembly(serviceAssembly, dependency.Name));
 
         private static bool IsValidDependency(DependencyBase dependency, IEnumerable<Assembly> serviceAssemblies)
             => serviceAssemblies.Any(serviceAssembly => IsRepositoryApiClientAssembly(serviceAssembly, dependency.Name));

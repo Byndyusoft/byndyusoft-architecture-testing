@@ -8,7 +8,8 @@
     public static class AssemblyExtensions
     {
         /// <summary>
-        /// Проверяет, что сборка <paramref name="assembly"/> является корневой сборкой сервиса <paramref name="serviceName"/>
+        ///     Проверяет, что сборка <paramref name="assembly" /> является корневой сборкой сервиса
+        ///     <paramref name="serviceName" />
         /// </summary>
         /// <param name="assembly">Проверяемая сборка</param>
         /// <param name="serviceName">Название сервиса</param>
@@ -16,7 +17,7 @@
             => assembly.GetName().Name!.CleanString().Equals(serviceName.CleanString());
 
         /// <summary>
-        /// Проверяет, что имя сборки <paramref name="assembly"/> совпадает с переданным <paramref name="assemblyName"/>
+        ///     Проверяет, что имя сборки <paramref name="assembly" /> совпадает с переданным <paramref name="assemblyName" />
         /// </summary>
         /// <param name="assembly">Проверяемая сборка</param>
         /// <param name="assemblyName">Предполагаемое имя сборки</param>
@@ -33,13 +34,13 @@
             .Concat(
                 assembly.GetReferencedAssemblies()
                     .Where(x => assembliesFilter?.Invoke(x) ?? true)
-                    .Where(x => processedAssemblyNames.Contains(x.FullName) == false)
-                    .Where(x => x.FullNameStartsWith("System.", "Microsoft.") == false)
+                    .Where(x => !processedAssemblyNames.Contains(x.FullName))
+                    .Where(x => !x.FullNameStartsWith("System.", "Microsoft."))
                     .SelectMany(
                         x =>
                         {
                             processedAssemblyNames.Add(x.FullName);
-                            if (loadedAssemblies.TryGetValue(x.FullName, out var loadedAssembly) == false)
+                            if (!loadedAssemblies.TryGetValue(x.FullName, out var loadedAssembly))
                             {
                                 loadedAssembly = Assembly.Load(x);
                                 loadedAssemblies[x.FullName] = loadedAssembly;
@@ -51,7 +52,7 @@
             );
 
         /// <summary>
-        /// Строит коллекцию сборок, используемых в сервисе
+        ///     Строит коллекцию сборок, используемых в сервисе
         /// </summary>
         /// <param name="rootAssembly">Корневая сборка сервиса</param>
         /// <param name="assembliesFilter">Предикат для фильтрации сборок по имени</param>
