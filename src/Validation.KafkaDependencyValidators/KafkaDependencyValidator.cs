@@ -1,12 +1,11 @@
-﻿
-namespace Byndyusoft.ArchitectureTesting.Validation.KafkaDependencyValidators
+﻿namespace Byndyusoft.ArchitectureTesting.Validation.KafkaDependencyValidators
 {
     using System.Collections.Generic;
     using System.Linq;
     using Abstractions.ServiceContracts.Dependencies;
     using Abstractions.ServiceImplementations;
     using Abstractions.Validation.DependencyValidators;
-    using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
+    using Abstractions.Validation.Extensions;
     using Microsoft.Extensions.DependencyInjection;
     using Net.Kafka.Abstractions.Consuming;
     using Net.Kafka.Abstractions.Producing;

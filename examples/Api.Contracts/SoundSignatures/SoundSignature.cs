@@ -1,13 +1,8 @@
-﻿namespace MusicalityLabs.Storage.Api.Contracts.SoundSignatures
+﻿namespace MusicalityLabs.Storage.Api.Contracts.SoundSignatures;
+
+public class SoundSignature
 {
-    using System.ComponentModel.DataAnnotations;
+    public int Id { get; set; }
 
-    public class SoundSignature
-    {
-        [Required]
-        public int? Id { get; set; }
-
-        [Required] 
-        public string Name { get; set; }
-    }
+    public string Name { get; set; } = default!;
 }

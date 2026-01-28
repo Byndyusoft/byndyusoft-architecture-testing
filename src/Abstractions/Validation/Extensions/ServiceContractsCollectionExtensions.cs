@@ -8,7 +8,8 @@
     public static class ServiceContractsCollectionExtensions
     {
         /// <summary>
-        /// Находит в коллекции <paramref name="serviceContracts"/> описание сервиса по его корневой сборке <paramref name="rootAssembly"/>
+        ///     Находит в коллекции <paramref name="serviceContracts" /> описание сервиса по его корневой сборке
+        ///     <paramref name="rootAssembly" />
         /// </summary>
         /// <param name="serviceContracts">Коллекция описаний сервисов</param>
         /// <param name="rootAssembly">Корневая сборка сервиса</param>

@@ -1,12 +1,12 @@
 ﻿namespace Byndyusoft.ArchitectureTesting.Abstractions.ServiceContracts.Dependencies
 {
     /// <summary>
-    /// Описание зависимости сервиса
+    ///     Описание зависимости сервиса
     /// </summary>
     public abstract class DependencyBase
     {
         /// <summary>
-        /// Название
+        ///     Название
         /// </summary>
         public string Name { get; set; }
 

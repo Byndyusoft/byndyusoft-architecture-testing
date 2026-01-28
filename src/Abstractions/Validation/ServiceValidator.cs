@@ -8,7 +8,7 @@
     using ServiceImplementations;
 
     /// <summary>
-    /// Валидатор реализации сервиса на соответствие описанию
+    ///     Валидатор реализации сервиса на соответствие описанию
     /// </summary>
     public class ServiceValidator
     {
@@ -20,7 +20,8 @@
         }
 
         /// <summary>
-        /// Валидирует реализацию сервиса <paramref name="implementation"/> на соответствие описанию <paramref name="contract"/>
+        ///     Валидирует реализацию сервиса <paramref name="implementation" /> на соответствие описанию
+        ///     <paramref name="contract" />
         /// </summary>
         /// <param name="contract">Описание сервиса</param>
         /// <param name="implementation">Реализация сервиса</param>
@@ -33,17 +34,18 @@
         )
         {
             var configuration = validationConfiguration ?? new ServiceValidationConfiguration();
+
             return contract.Dependencies
                 .GroupBy(dependency => dependency.GetType())
-                .Where(dependenciesGroup => configuration.IgnoredDependencyTypes.Contains(dependenciesGroup.Key) == false)
+                .Where(dependenciesGroup => !configuration.IgnoredDependencyTypes.Contains(dependenciesGroup.Key))
                 .SelectMany(
                     dependenciesGroup =>
-                        {
-                            if (_dependencyValidators.TryGetValue(dependenciesGroup.Key, out var validator) == false)
-                                throw new InvalidOperationException($"Validator for dependency {dependenciesGroup.Key.Name} must be provided");
+                    {
+                        if (_dependencyValidators.TryGetValue(dependenciesGroup.Key, out var validator) == false)
+                            throw new InvalidOperationException($"Validator for dependency {dependenciesGroup.Key.Name} must be provided");
 
-                            return validator.Validate(dependenciesGroup.ToArray(), implementation);
-                        }
+                        return validator.Validate(dependenciesGroup.ToArray(), implementation);
+                    }
                 );
         }
     }

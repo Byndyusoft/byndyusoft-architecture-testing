@@ -15,15 +15,16 @@ jobs:
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_ENVIRONMENT: Development
       
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: install dotnet 6.0
+      - name: Install dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: '8.0.x'
 
       - name: Install packages
         run: dotnet restore

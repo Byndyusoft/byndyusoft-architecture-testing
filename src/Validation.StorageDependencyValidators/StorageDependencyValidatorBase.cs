@@ -1,4 +1,4 @@
-﻿namespace Byndyusoft.ArchitectureTesting.Validation.DependencyValidators
+﻿namespace Byndyusoft.ArchitectureTesting.Validation.StorageDependencyValidators
 {
     using System;
     using System.Collections.Generic;

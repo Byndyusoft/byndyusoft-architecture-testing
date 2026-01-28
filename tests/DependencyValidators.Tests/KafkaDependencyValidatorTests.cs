@@ -1,137 +1,136 @@
-﻿namespace Byndyusoft.ArchitectureTesting.DependencyValidators.Tests
+﻿namespace Byndyusoft.ArchitectureTesting.DependencyValidators.Tests;
+
+using System;
+using Abstractions.ServiceContracts.Dependencies;
+using Abstractions.ServiceImplementations;
+using Fakes;
+using FluentAssertions;
+using Infrastructure.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using Net.Kafka;
+using Net.Kafka.Abstractions.Consuming;
+using Net.Kafka.Abstractions.Producing;
+using Net.Kafka.Configuration;
+using Validation.KafkaDependencyValidators;
+using Xunit;
+
+public class KafkaDependencyValidatorTests
 {
-    using Abstractions.ServiceContracts.Dependencies;
-    using FluentAssertions;
-    using System;
-    using Abstractions.ServiceImplementations;
-    using Microsoft.Extensions.DependencyInjection;
-    using Xunit;
-    using Fakes;
-    using Byndyusoft.Net.Kafka.Abstractions.Producing;
-    using Infrastructure.Logging;
-    using Net.Kafka;
-    using Net.Kafka.Abstractions.Consuming;
-    using Net.Kafka.Configuration;
-    using Validation.KafkaDependencyValidators;
+    public static readonly TheoryData<DependencyValidatorTestCase> KafkaDependenciesValidationTestCases;
 
-    public class KafkaDependencyValidatorTests
+    private static ServiceImplementation CreateServiceImplementation(Action<IServiceCollection>? configureDependencies = null)
     {
-        public static readonly TheoryData<DependencyValidatorTestCase> KafkaDependenciesValidationTestCases;
+        var services = new ServiceCollection();
+        configureDependencies?.Invoke(services);
 
-        private static ServiceImplementation CreateServiceImplementation(Action<IServiceCollection>? configureDependencies = null)
-        {
-            var services = new ServiceCollection();
-            configureDependencies?.Invoke(services);
+        return new ServiceImplementation { ServiceProvider = services.BuildServiceProvider() };
+    }
 
-            return new ServiceImplementation {ServiceProvider = services.BuildServiceProvider()};
-        }
-
-        static KafkaDependencyValidatorTests()
-        {
-            const string kafkaTopicName = "composer_assistant.entity.creation";
-            KafkaDependenciesValidationTestCases
-                = new TheoryData<DependencyValidatorTestCase>
+    static KafkaDependencyValidatorTests()
+    {
+        const string kafkaTopicName = "composer_assistant.entity.creation";
+        KafkaDependenciesValidationTestCases
+            = new TheoryData<DependencyValidatorTestCase>
+              {
+                  new()
                   {
-                      new DependencyValidatorTestCase
-                      {
-                          Description = "There are no dependencies on Kafka in either the architecture or the application",
-                          Dependencies = Array.Empty<DependencyBase>(),
-                          ServiceImplementation = CreateServiceImplementation(),
-                          ExpectedErrors = Array.Empty<string>()
-                      },
-                      new DependencyValidatorTestCase
-                      {
-                          Description = "Kafka message producer from the architecture was not implemented in the service",
-                          Dependencies
-                              = new DependencyBase[]
+                      Description = "There are no dependencies on Kafka in either the architecture or the application",
+                      Dependencies = Array.Empty<DependencyBase>(),
+                      ServiceImplementation = CreateServiceImplementation(),
+                      ExpectedErrors = Array.Empty<string>()
+                  },
+                  new()
+                  {
+                      Description = "Kafka message producer from the architecture was not implemented in the service",
+                      Dependencies
+                          = new DependencyBase[]
+                            {
+                                new KafkaDependency
                                 {
-                                    new KafkaDependency
-                                    {
-                                        Direction = MqDependencyDirection.Outgoing,
-                                        Name = kafkaTopicName
-                                    }
-                                },
-                          ServiceImplementation = CreateServiceImplementation(),
-                          ExpectedErrors
-                              = new[]
-                                {
-                                    $"Message producer for topic {kafkaTopicName} is missed"
+                                    Direction = MqDependencyDirection.Outgoing,
+                                    Name = kafkaTopicName
                                 }
-                      },
-                      new DependencyValidatorTestCase
-                      {
-                          Description = "Kafka message handler from the architecture was not implemented in the service",
-                          Dependencies
-                              = new DependencyBase[]
+                            },
+                      ServiceImplementation = CreateServiceImplementation(),
+                      ExpectedErrors
+                          = new[]
+                            {
+                                $"Message producer for topic {kafkaTopicName} is missed"
+                            }
+                  },
+                  new()
+                  {
+                      Description = "Kafka message handler from the architecture was not implemented in the service",
+                      Dependencies
+                          = new DependencyBase[]
+                            {
+                                new KafkaDependency
                                 {
-                                    new KafkaDependency
-                                    {
-                                        Direction = MqDependencyDirection.Incoming,
-                                        Name = kafkaTopicName
-                                    }
-                                },
-                          ServiceImplementation = CreateServiceImplementation(),
-                          ExpectedErrors
-                              = new[]
-                                {
-                                    $"Message handler for topic {kafkaTopicName} is missed"
+                                    Direction = MqDependencyDirection.Incoming,
+                                    Name = kafkaTopicName
                                 }
-                      },
-                      new DependencyValidatorTestCase
-                      {
-                          Description = "Kafka message producer and handler missing from the architecture has been added to the service",
-                          Dependencies = Array.Empty<DependencyBase>(),
-                          ServiceImplementation = CreateServiceImplementation(
-                              services => services
-                                  .AddNullLogger()
-                                  .AddKafkaBus(new KafkaSettings {Hosts = new[] {"localhost"}})
-                          ),
-                          ExpectedErrors
-                              = new[]
+                            },
+                      ServiceImplementation = CreateServiceImplementation(),
+                      ExpectedErrors
+                          = new[]
+                            {
+                                $"Message handler for topic {kafkaTopicName} is missed"
+                            }
+                  },
+                  new()
+                  {
+                      Description = "Kafka message producer and handler missing from the architecture has been added to the service",
+                      Dependencies = Array.Empty<DependencyBase>(),
+                      ServiceImplementation = CreateServiceImplementation(
+                          services => services
+                              .AddNullLogger()
+                              .AddKafkaBus(new KafkaSettings { Hosts = new[] { "localhost" } })
+                      ),
+                      ExpectedErrors
+                          = new[]
+                            {
+                                $"Message producer for topic {KafkaMessageProducerTypeExtensions.GetTopic(typeof(EntityCreationKafkaMessageProducer))} is not is not allowed by architecture",
+                                $"Message handler for topic {KafkaMessageHandlerTypeExtensions.GetTopic(typeof(EntityCreationKafkaMessageHandler))} is not is not allowed by architecture"
+                            }
+                  },
+                  new()
+                  {
+                      Description = "Kafka message producer and handler from the architecture were implemented in the service",
+                      Dependencies
+                          = new DependencyBase[]
+                            {
+                                new KafkaDependency
                                 {
-                                    $"Message producer for topic {KafkaMessageProducerTypeExtensions.GetTopic(typeof(EntityCreationKafkaMessageProducer))} is not is not allowed by architecture",
-                                    $"Message handler for topic {KafkaMessageHandlerTypeExtensions.GetTopic(typeof(EntityCreationKafkaMessageHandler))} is not is not allowed by architecture"
-                                }
-                      },
-                      new DependencyValidatorTestCase
-                      {
-                          Description = "Kafka message producer and handler from the architecture were implemented in the service",
-                          Dependencies
-                              = new DependencyBase[]
-                                {
-                                    new KafkaDependency
-                                    {
-                                        Direction = MqDependencyDirection.Outgoing,
-                                        Name = kafkaTopicName
-                                    },
-                                    new KafkaDependency
-                                    {
-                                        Direction = MqDependencyDirection.Incoming,
-                                        Name = kafkaTopicName
-                                    }
+                                    Direction = MqDependencyDirection.Outgoing,
+                                    Name = kafkaTopicName
                                 },
-                          ServiceImplementation = CreateServiceImplementation(
-                              services => services
-                                  .AddNullLogger()
-                                  .AddKafkaBus(new KafkaSettings {Hosts = new[] {"localhost"}})
-                          ),
-                          ExpectedErrors = Array.Empty<string>()
-                      }
-                  };
-        }
+                                new KafkaDependency
+                                {
+                                    Direction = MqDependencyDirection.Incoming,
+                                    Name = kafkaTopicName
+                                }
+                            },
+                      ServiceImplementation = CreateServiceImplementation(
+                          services => services
+                              .AddNullLogger()
+                              .AddKafkaBus(new KafkaSettings { Hosts = new[] { "localhost" } })
+                      ),
+                      ExpectedErrors = Array.Empty<string>()
+                  }
+              };
+    }
 
-        [Theory]
-        [MemberData(nameof(KafkaDependenciesValidationTestCases))]
-        public void ShouldValidateKafkaDependencies(DependencyValidatorTestCase testCase)
-        {
-            // Given
-            var dependencyValidator = new KafkaDependencyValidator();
+    [Theory]
+    [MemberData(nameof(KafkaDependenciesValidationTestCases))]
+    public void ShouldValidateKafkaDependencies(DependencyValidatorTestCase testCase)
+    {
+        // Given
+        var dependencyValidator = new KafkaDependencyValidator();
 
-            // When
-            var actualErrors = dependencyValidator.Validate(testCase.Dependencies, testCase.ServiceImplementation);
+        // When
+        var actualErrors = dependencyValidator.Validate(testCase.Dependencies, testCase.ServiceImplementation);
 
-            // Then
-            actualErrors.Should().BeEquivalentTo(testCase.ExpectedErrors);
-        }
+        // Then
+        actualErrors.Should().BeEquivalentTo(testCase.ExpectedErrors);
     }
 }

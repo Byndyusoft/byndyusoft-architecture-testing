@@ -8,9 +8,9 @@
 
         public string Description { get; set; }
 
-        public string Tags { get; set; }
-
         public string Technology { get; set; }
+
+        public string Tags { get; set; }
 
         public override string ToString() => Description;
     }

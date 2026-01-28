@@ -3,7 +3,7 @@
     public static class StringExtensions
     {
         /// <summary>
-        /// Очищает строку от разделителей и приводит ее к нижнему регистру
+        ///     Очищает строку от разделителей и приводит ее к нижнему регистру
         /// </summary>
         /// <param name="value">Очищаемая строка</param>
         public static string CleanString(this string value)

@@ -11,12 +11,13 @@
     {
         private readonly Type _dependencyValidatorInterfaceType = typeof(IDependencyValidator);
         private readonly Type _dependencyValidatorBaseType = typeof(DependencyValidatorBase<>);
-        private readonly Dictionary<Type, IDependencyValidator> _dependencyValidators = new Dictionary<Type, IDependencyValidator>();
+        private readonly Dictionary<Type, IDependencyValidator> _dependencyValidators = new();
 
         public IServiceValidatorBuilder AddDependencyValidator<TDependency>(DependencyValidatorBase<TDependency> dependencyValidator)
             where TDependency : DependencyBase
         {
             _dependencyValidators[typeof(TDependency)] = dependencyValidator;
+
             return this;
         }
 
@@ -37,16 +38,18 @@
             foreach (var compatibleType in compatibleTypes)
             {
                 var dependencyType = GetDependencyType(compatibleType);
-                if(dependencyType == null)
+
+                if (dependencyType == null)
                     continue;
 
                 var defaultConstructor = compatibleType.GetConstructor(Type.EmptyTypes);
+
                 if (defaultConstructor == null)
                     continue;
 
                 _dependencyValidators[dependencyType] = (IDependencyValidator)defaultConstructor.Invoke(null);
             }
-                
+
             return this;
         }
 
