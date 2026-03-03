@@ -53,6 +53,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "examples\Api\Api.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "examples\Api.Tests\Api.Tests.csproj", "{4A084293-5B9D-4F46-B52E-F84766D2541C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RulesValidation", "RulesValidation", "{AD3CF2B0-7437-423C-8129-FF6655ABC26E}"
+	ProjectSection(SolutionItems) = preProject
+		src\RulesValidation\common.props = src\RulesValidation\common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{42736E0D-2F61-46EC-9FFA-203F5BF87ED6}"
+	ProjectSection(SolutionItems) = preProject
+		src\RulesValidation\src\Directory.Build.props = src\RulesValidation\src\Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,6 +142,8 @@ Global
 		{31C3CDF3-DB74-4BCA-B6BE-83080A3B33F6} = {DDFA9228-AB49-4F45-ABCF-06B298C1B538}
 		{C72D3877-F77C-47ED-86EE-298148D5EDDC} = {DDFA9228-AB49-4F45-ABCF-06B298C1B538}
 		{4A084293-5B9D-4F46-B52E-F84766D2541C} = {DDFA9228-AB49-4F45-ABCF-06B298C1B538}
+		{AD3CF2B0-7437-423C-8129-FF6655ABC26E} = {A7CA486E-2647-492F-BE77-BAEEC8E209A2}
+		{42736E0D-2F61-46EC-9FFA-203F5BF87ED6} = {AD3CF2B0-7437-423C-8129-FF6655ABC26E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A79E4AD9-244B-42E6-BD30-255B9C3DEC46}
