@@ -1,26 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common.props))\common.props" />
+
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="musicality-labs.dsl" />
-	  <None Remove="musicality-labs.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="musicality-labs.dsl">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="musicality-labs.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
+		<PackageReference Include="Byndyusoft.Net.Kafka" Version="1.2.1" />
 		<PackageReference Include="FluentAssertions" Version="8.8.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+		<PackageReference Include="Moq" Version="4.20.72" />
 		<PackageReference Include="xunit" Version="2.9.3" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -33,10 +26,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\ServiceImplementations\ServiceImplementations.csproj" />
-	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\StructurizrParser\StructurizrParser.csproj" />
-	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\Validation.StorageDependencyValidators\Validation.StorageDependencyValidators.csproj" />
-	  <ProjectReference Include="..\Api\Api.csproj" />
+		<ProjectReference Include="..\..\src\Validation.ApiDependencyValidators\Validation.ApiDependencyValidators.csproj" />
+		<ProjectReference Include="..\..\src\Validation.KafkaDependencyValidators\Validation.KafkaDependencyValidators.csproj" />
+		<ProjectReference Include="..\..\src\Validation.StorageDependencyValidators\Validation.StorageDependencyValidators.csproj" />
 	</ItemGroup>
 
 </Project>
