@@ -34,13 +34,13 @@
             .Concat(
                 assembly.GetReferencedAssemblies()
                     .Where(x => assembliesFilter?.Invoke(x) ?? true)
-                    .Where(x => !processedAssemblyNames.Contains(x.FullName))
-                    .Where(x => !x.FullNameStartsWith("System.", "Microsoft."))
+                    .Where(x => processedAssemblyNames.Contains(x.FullName) == false)
+                    .Where(x => x.FullNameStartsWith("System.", "Microsoft.") == false)
                     .SelectMany(
                         x =>
                         {
                             processedAssemblyNames.Add(x.FullName);
-                            if (!loadedAssemblies.TryGetValue(x.FullName, out var loadedAssembly))
+                            if (loadedAssemblies.TryGetValue(x.FullName, out var loadedAssembly) == false)
                             {
                                 loadedAssembly = Assembly.Load(x);
                                 loadedAssemblies[x.FullName] = loadedAssembly;
