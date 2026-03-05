@@ -1,4 +1,4 @@
-﻿namespace Byndyusoft.ArchitectureTesting.ReferenceCompliance.Abstractions.Validation.Extensions
+﻿namespace Byndyusoft.ArchitectureTesting.Common.Abstractions.Extensions
 {
     using System;
     using System.Linq;

@@ -6,7 +6,7 @@
     using Abstractions.ServiceContracts.Dependencies;
     using Abstractions.ServiceImplementations;
     using Abstractions.Validation.DependencyValidators;
-    using Abstractions.Validation.Extensions;
+    using Common.Abstractions.Extensions;
 
     public class StorageDependencyValidatorBase<TDependency> : DependencyValidatorBase<TDependency>
         where TDependency : StorageDependencyBase

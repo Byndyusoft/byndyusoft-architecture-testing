@@ -3,7 +3,7 @@
     using System;
     using System.Reflection;
     using Abstractions.ServiceImplementations;
-    using Abstractions.Validation.Extensions;
+    using Common.Abstractions.Extensions;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
