@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\src\Abstractions\Abstractions.csproj" />
+      <ProjectReference Include="..\Abstractions\Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="TngTech.ArchUnitNET" Version="0.13.3" />
+    </ItemGroup>
+
+</Project>

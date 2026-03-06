@@ -11,7 +11,7 @@
         ///     Инициализация зависимостей объекта
         /// </summary>
         /// <param name="segments">Сегменты пути в графе компонентов</param>
-        public ComponentsGraphPath(string[] segments)
+        public ComponentsGraphPath(params string[] segments)
         {
             Segments = segments;
             Text = string.Join(".", segments);
