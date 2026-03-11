@@ -36,6 +36,7 @@
 	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\ServiceImplementations\ServiceImplementations.csproj" />
 	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\StructurizrParser\StructurizrParser.csproj" />
 	  <ProjectReference Include="..\..\src\ReferenceCompliance\src\Validation.StorageDependencyValidators\Validation.StorageDependencyValidators.csproj" />
+	  <ProjectReference Include="..\..\src\RulesValidation\src\ComponentsAnalysis\ComponentsAnalysis.csproj" />
 	  <ProjectReference Include="..\..\src\RulesValidation\src\ComponentsExtraction\ComponentsExtraction.csproj" />
 	  <ProjectReference Include="..\Api\Api.csproj" />
 	</ItemGroup>
