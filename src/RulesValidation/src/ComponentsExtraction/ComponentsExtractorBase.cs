@@ -100,8 +100,8 @@
         {
             var slicesByContainedTypes = new Dictionary<IType, Slice>();
             foreach (var slice in componentsToSlicesMap.Values)
-            foreach (var type in slice.Types)
-                slicesByContainedTypes.Add(type, slice);
+                foreach (var type in slice.Types)
+                    slicesByContainedTypes.Add(type, slice);
 
             var slicesToComponentsMap = componentsToSlicesMap.ToDictionary(x => x.Value, x => x.Key);
             foreach (var component in components)
