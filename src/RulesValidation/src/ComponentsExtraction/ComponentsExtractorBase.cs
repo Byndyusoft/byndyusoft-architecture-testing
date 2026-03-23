@@ -37,7 +37,7 @@
                 .Matching($"{RootNamespace}.(*)")
                 .GetObjects(architecture)
                 .ToArray();
-            var slicePathTexts = slices
+            var slicePaths = slices
                 .Select(slice => slice.Identifier.Identifier)
                 .ToHashSet(StringComparer.InvariantCultureIgnoreCase);
 
@@ -45,7 +45,7 @@
             var componentsToSlicesMap = new Dictionary<Component, Slice>();
             foreach (var slice in slices)
             {
-                var component = new Component { Path = GetComponentsGraphPath(slicePathTexts, slice) };
+                var component = new Component { Path = GetComponentsGraphPath(slicePaths, slice) };
                 components.Add(component);
                 componentsToSlicesMap.Add(component, slice);
             }
@@ -56,18 +56,18 @@
             return components.ToArray();
         }
 
-        private static ComponentsGraphPath GetComponentsGraphPath(HashSet<string> slicePathTexts, Slice slice)
+        private static ComponentsGraphPath GetComponentsGraphPath(HashSet<string> slicePaths, Slice slice)
         {
             var slicePathSegments = slice.Identifier.Identifier.Split('.');
             
-            var slicePathText = slicePathSegments[0];
-            var componentGraphPathSegment = slicePathText;
+            var slicePath = slicePathSegments[0];
+            var componentGraphPathSegment = slicePath;
             var componentGraphPathSegments = new List<string>();
             for (var i = 1; i < slicePathSegments.Length; i++)
             {
                 var slicePathSegment = slicePathSegments[i];
 
-                if (slicePathTexts.Contains(slicePathText))
+                if (slicePaths.Contains(slicePath))
                 {
                     componentGraphPathSegments.Add(componentGraphPathSegment);
                     componentGraphPathSegment = slicePathSegment;
@@ -75,7 +75,7 @@
                 else
                     componentGraphPathSegment = componentGraphPathSegment.Combine(slicePathSegment);
 
-                slicePathText = slicePathText.Combine(slicePathSegment);
+                slicePath = slicePath.Combine(slicePathSegment);
             }
 
             componentGraphPathSegments.Add(componentGraphPathSegment);
