@@ -2,10 +2,10 @@
 
 using System;
 using System.IO;
-using Byndyusoft.ArchitectureTesting.Abstractions.Validation;
-using Byndyusoft.ArchitectureTesting.Abstractions.Validation.Extensions;
-using Byndyusoft.ArchitectureTesting.StructurizrParser;
-using Byndyusoft.ArchitectureTesting.Validation.StorageDependencyValidators;
+using Byndyusoft.ArchitectureTesting.ReferenceCompliance.Abstractions.Validation;
+using Byndyusoft.ArchitectureTesting.ReferenceCompliance.Abstractions.Validation.Extensions;
+using Byndyusoft.ArchitectureTesting.ReferenceCompliance.StructurizrParser;
+using Byndyusoft.ArchitectureTesting.ReferenceCompliance.Validation.StorageDependencyValidators;
 using FluentAssertions;
 using Validation.ServiceImplementations;
 using Xunit;

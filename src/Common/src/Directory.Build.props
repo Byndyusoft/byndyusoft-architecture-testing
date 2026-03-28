@@ -1,0 +1,12 @@
+<Project>
+
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), common.props))\common.props"/>
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>9</LangVersion>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+</Project>
